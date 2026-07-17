@@ -12,7 +12,8 @@ Curso completo sobre o **Forja Reel**: uma meta-skill que pega um vídeo bruto (
 Abra o `index.html` na raiz (ou acesse pelo GitHub Pages). Curso self-contained: HTML + Tailwind (CDN) + JS inline, com camada de aprendizagem (progresso, anotações, temas) — funciona offline.
 
 ## Baixar a skill
-O arquivo pronto para o Claude Code está em [`download/forja-reel.skill`](download/forja-reel.skill).
+A skill Forja Reel (com download pronto e guia de uso) vive em
+[inematds/videos-edit-cria](https://inematds.github.io/videos-edit-cria/guia/).
 
 ---
 Feito para a comunidade · [INEMA.CLUB](https://inema.club)
