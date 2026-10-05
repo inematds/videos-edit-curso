@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="forja-reel" name="inema-course"/>
+<title>Module 4.2 · Real End-to-End Workflow + QC | videos-edit Forja Reel</title>
+<script>
+  (function () {
+    try {
+      var html = document.documentElement;
+      var DEF = { theme: 'inema-dark', font: 'inter', fontScale: 100, lineWidth: 68, leading: 1.7, accent: 'amber' };
+      function clone(o){var r={};for(var x in o)r[x]=o[x];return r;}
+      var p = clone(DEF);
+      try {
+        var raw = localStorage.getItem('inema.prefs');
+        if (raw) { var parsed = JSON.parse(raw); if (parsed && typeof parsed === 'object') { for (var k in DEF) if (parsed[k] != null) p[k] = parsed[k]; } }
+        else { var legacy = localStorage.getItem('theme'); if (legacy === 'light') p.theme = 'claro'; else if (legacy === 'dark') p.theme = 'inema-dark'; }
+      } catch (e) { p = clone(DEF); }
+      var THEMES = { 'inema-dark':{dark:true,attr:null,cs:'dark'}, 'claro':{dark:false,attr:null,cs:'light'}, 'sepia':{dark:false,attr:'sepia',cs:'light'}, 'foco':{dark:null,attr:'foco',cs:null}, 'contraste':{dark:true,attr:'contraste',cs:'dark'} };
+      var t = THEMES[p.theme] || THEMES['inema-dark'];
+      if (t.dark === true) html.classList.add('dark'); else if (t.dark === false) html.classList.remove('dark');
+      if (t.attr) html.setAttribute('data-theme', t.attr); else html.removeAttribute('data-theme');
+      html.style.colorScheme = (t.cs ? t.cs : (html.classList.contains('dark') ? 'dark' : 'light'));
+      html.setAttribute('data-font', p.font || 'inter');
+      html.setAttribute('data-accent', p.accent || 'amber');
+      var s = html.style; var scale = (+p.fontScale || 100);
+      s.setProperty('--inema-font-scale', (scale/100).toString());
+      s.setProperty('font-size', scale + '%');
+      s.setProperty('--measure', (+p.lineWidth || 68) + 'ch');
+      s.setProperty('--lh-body', (+p.leading || 1.7).toString());
+      var fam = p.font === 'system' ? 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif' : (p.font === 'leitura' ? '"Atkinson Hyperlegible", "Inter", system-ui, sans-serif' : '"Inter", system-ui, sans-serif');
+      s.setProperty('--font-body', fam);
+      var ACC = { emerald:[152,76,45], blue:[217,91,60], purple:[258,90,66], amber:[38,92,50], teal:[174,72,41], rose:[350,89,60] };
+      var a = ACC[p.accent] || ACC.amber;
+      s.setProperty('--accent-h', a[0]+''); s.setProperty('--accent-s', a[1]+'%'); s.setProperty('--accent-l', a[2]+'%');
+      s.setProperty('--accent', 'hsl('+a[0]+' '+a[1]+'% '+a[2]+'%)');
+    } catch (err) { try { document.documentElement.classList.add('dark'); document.documentElement.style.colorScheme='dark'; } catch(e){} }
+  })();
+  </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } } }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="../../../assets/learn.css" rel="stylesheet"/>
+<script data-inema-manifest="" type="application/json">
+  {
+    "course": "forja-reel",
+    "tracks": [
+      { "n": "1", "title": "Fundamento", "modules": [
+        { "id": "1-1", "title": "O que e o Forja Reel", "topics": 7, "href": "curso/trilha1/modulo-1-1.html" },
+        { "id": "1-2", "title": "O que muda no seu jeito de editar", "topics": 6, "href": "curso/trilha1/modulo-1-2.html" }
+      ]},
+      { "n": "2", "title": "A skill por dentro", "modules": [
+        { "id": "2-1", "title": "As 5 fases do motor", "topics": 7, "href": "curso/trilha2/modulo-2-1.html" },
+        { "id": "2-2", "title": "Comportas, scripts e determinismo", "topics": 6, "href": "curso/trilha2/modulo-2-2.html" }
+      ]},
+      { "n": "3", "title": "Como usar", "modules": [
+        { "id": "3-1", "title": "Stack e instalacao", "topics": 6, "href": "curso/trilha3/modulo-3-1.html" },
+        { "id": "3-2", "title": "Entrevista, gerar sua skill e primeiro reel", "topics": 6, "href": "curso/trilha3/modulo-3-2.html" }
+      ]},
+      { "n": "4", "title": "Exemplos praticos", "modules": [
+        { "id": "4-1", "title": "As 6 receitas + cold open", "topics": 7, "href": "curso/trilha4/modulo-4-1.html" },
+        { "id": "4-2", "title": "Fluxo real ponta a ponta + QC", "topics": 6, "href": "curso/trilha4/modulo-4-2.html" }
+      ]}
+    ]
+  }
+  </script>
+<style>
+    body { font-family: var(--font-body, 'Inter', sans-serif); }
+    .dark body { background-color: #111827; }
+    [id] { scroll-margin-top: 5rem; }
+    svg[role="img"] { max-width: 100%; }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* acento primário: AMBER (T4) */
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(180,83,9,0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(180,83,9,0.08); }
+    html:not(.dark) .bg-amber-900\/20 { background-color: rgba(180,83,9,0.08); }
+    html:not(.dark) .bg-amber-900\/30 { background-color: rgba(180,83,9,0.10); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(180,83,9,0.25); }
+    html:not(.dark) .hover\:bg-amber-500\/30:hover { background-color: rgba(180,83,9,0.18); }
+    html:not(.dark) .hover\:border-amber-500\/30:hover { border-color: rgba(180,83,9,0.35); }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .group:hover .group-hover\:text-amber-400 { color: #92400e; }
+
+    /* nav hover das outras trilhas */
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5,150,105,0.08); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37,99,235,0.08); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124,58,237,0.08); }
+
+    /* boxes de conteúdo (blue = dados/apoio, red = evitar) */
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-900\/20 { background-color: rgba(37,99,235,0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37,99,235,0.25); }
+    html:not(.dark) .text-red-400 { color: #dc2626; }
+    html:not(.dark) .bg-red-900\/20 { background-color: rgba(220,38,38,0.07); }
+    html:not(.dark) .border-red-500\/30 { border-color: rgba(220,38,38,0.25); }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161,98,7,0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161,98,7,0.22); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255,255,255,0.95); }
+
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+  </style>
+<link href="https://inematds.github.io/videos-edit-curso/curso/trilha4/modulo-4-2.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/videos-edit-curso/en/curso/trilha4/modulo-4-2.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/videos-edit-curso/es/curso/trilha4/modulo-4-2.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha4/modulo-4-2.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="modulo-4-2.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">EN</a><a href="../../../es/curso/trilha4/modulo-4-2.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<a class="skip sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-2 focus:left-2 focus:px-4 focus:py-2 focus:bg-dark-800 focus:rounded-lg" href="#conteudo">Skip to content</a>
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14 gap-2">
+<div class="flex items-center space-x-3 min-w-0">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">🎬</span>
+<span class="font-bold text-lg hidden sm:inline">videos-edit Forja Reel</span>
+</a>
+<span class="text-neutral-600 hidden sm:inline">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+<span class="text-neutral-600 hidden sm:inline">-</span>
+<a class="text-amber-700 hover:text-amber-600 dark:text-slate-300 dark:hover:text-slate-200 text-sm font-medium" href="https://inema.pro" target="_blank">PRO</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-2.5 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Foundation</span></a>
+<a class="px-2.5 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">The skill</span></a>
+<a class="px-2.5 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">How to use</span></a>
+<a class="px-2.5 py-1.5 rounded-lg text-sm font-semibold text-amber-400 bg-amber-500/10" href="index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Examples</span></a>
+<button class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-neutral-300 hover:text-neutral-100 hover:bg-dark-700 transition-colors text-sm" data-inema-journey-open="" type="button"><span aria-hidden="true">◷</span><span class="hidden lg:inline">Journey</span><span class="inema-journey-badge hidden" data-count="0" data-inema-journey-badge=""></span></button>
+<button aria-expanded="false" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-neutral-300 hover:text-neutral-100 hover:bg-dark-700 transition-colors text-sm" data-inema-appearance-toggle="[data-inema-appearance]" type="button"><span aria-hidden="true">◑</span><span class="hidden lg:inline">Appearance</span></button>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+<div class="inema-appearance-pop" data-inema-appearance="">
+<div aria-label="Theme" class="inema-segment" role="group"><button data-inema-set-theme="inema-dark">Dark</button><button data-inema-set-theme="claro">Clear</button><button data-inema-set-theme="sepia">Sepia</button><button data-inema-set-theme="foco">Focus</button><button data-inema-set-theme="contraste">High contrast</button></div>
+<div aria-label="Source" class="inema-segment" role="group"><button data-inema-set-font="inter">Inter</button><button data-inema-set-font="system">System</button><button data-inema-set-font="leitura">Reading</button></div>
+<div aria-label="Size" class="inema-segment" role="group"><button data-inema-set-fontscale="100">A</button><button data-inema-set-fontscale="112">A+</button><button data-inema-set-fontscale="125">A++</button></div>
+<div aria-label="Width" class="inema-segment" role="group"><button data-inema-set-linewidth="60">Narrow</button><button data-inema-set-linewidth="68">Intermediate</button><button data-inema-set-linewidth="75">Wide</button></div>
+<div aria-label="Line spacing" class="inema-segment" role="group"><button data-inema-set-leading="1.45">Compact</button><button data-inema-set-leading="1.7">Comfortable</button></div>
+<div aria-label="Accent color" class="inema-accent-grid" role="group"><button data-inema-set-accent="emerald" title="Green"></button><button data-inema-set-accent="blue" title="Blue"></button><button data-inema-set-accent="purple" title="Purple"></button><button data-inema-set-accent="amber" title="Amber"></button><button data-inema-set-accent="teal" title="Teal"></button><button data-inema-set-accent="rose" title="Pink"></button></div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav aria-label="Navigation track" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-amber-400" href="../../index.html">Start</a>
+<span>/</span>
+<a class="hover:text-amber-400" href="index.html">Track 4</a>
+<span>/</span>
+<span class="text-amber-400">Module 4.2</span>
+</div>
+</nav>
+<main id="conteudo">
+<!-- HEADER DO MÓDULO -->
+<header class="bg-gradient-to-br from-amber-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full mb-4">MODULE 4.2</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🎬 Real end-to-end workflow + QC</h1>
+<p class="text-lg text-neutral-400 max-w-3xl inema-prose">The final module: a real raw video going through the <strong class="text-neutral-200">5 phases</strong> through the approved reel. Beat sheet, real B-roll with Firecrawl, SFX it creates, reviewer in a loop, and the <strong class="text-neutral-200">quality checklist</strong> that decides whether to publish. Practical module: there’s a command here to paste and run.</p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">6</div><div class="text-xs text-neutral-400">Topics</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">~30min</div><div class="text-xs text-neutral-400">Duration</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">Practical</div><div class="text-xs text-neutral-400">Level</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">Flow</div><div class="text-xs text-neutral-400">Type</div></div>
+</div>
+<div aria-label="Module 4.2 progress" aria-valuemax="100" aria-valuemin="0" class="inema-meter max-w-md mt-6" data-inema-meter="modulo:4-2" role="progressbar">
+<div class="flex items-center justify-between text-sm mb-1"><span class="text-neutral-400">Sections read in this module</span><span class="text-amber-400 font-semibold"><span data-inema-meter-pct="">0%</span> · <span data-inema-meter-frac="">0 of 0</span></span></div>
+<div class="inema-bar"><div class="inema-bar__fill" data-inema-meter-fill=""></div></div>
+</div>
+</div>
+</header>
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="lg:grid lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-10">
+<!-- TOC -->
+<nav aria-label="Module index" class="hidden lg:block sticky top-24 self-start" data-inema-toc="">
+<p class="text-sm text-neutral-400 mb-2">Section <span class="inema-toc-pos">1</span> of <span class="inema-toc-total">6</span></p>
+<ul class="space-y-1 text-sm">
+<li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-amber-400 transition-colors" href="#topico-1">1. From raw footage to reel</a></li>
+<li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-amber-400 transition-colors" href="#topico-2">2. Beat sheet</a></li>
+<li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-amber-400 transition-colors" href="#topico-3">3. Real B-roll (Firecrawl)</a></li>
+<li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-amber-400 transition-colors" href="#topico-4">4. SFX it produces</a></li>
+<li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-amber-400 transition-colors" href="#topico-5">5. Reviewer until PASS</a></li>
+<li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-amber-400 transition-colors" href="#topico-6">6. Final checklist</a></li>
+</ul>
+</nav>
+<div class="min-w-0">
+<!-- ================= TÓPICO 1 ================= -->
+<section class="mb-16" data-inema-topic="modulo-4-2#topico-1" id="topico-1">
+<div class="flex items-center justify-between gap-3 mb-6">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl flex-shrink-0">1</span>
+<h2 class="text-2xl font-bold">🎥 From raw footage to reel: 5 phases in a real video</h2>
+</div>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Flag a question about this topic" type="button"><span aria-hidden="true">?</span><span>I have a question</span></button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m4-2-t1-p1">
+              Let’s take a real raw video—say, you talking for 6 minutes about a project—and follow the whole process. One command starts the <strong class="text-amber-400">5 phases</strong> from the engine, one after another, until the reel is approved.
+            </p>
+<!-- SVG: pipeline de 5 fases -->
+<figure class="rounded-2xl border border-amber-500/30 bg-dark-900/40 p-3 sm:p-4 mb-6 overflow-hidden">
+<svg aria-label="A raw video comes in and passes through five phases in sequence—cutting, analysis and treatment, motion and B-roll, SFX render and QC, and review—then comes out as an approved reel on the right" class="w-full h-auto" role="img" viewbox="0 0 960 200">
+<defs>
+<lineargradient id="m42-grad" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fbbf24"></stop><stop offset="1" stop-color="#f59e0b"></stop></lineargradient>
+<filter height="180%" id="m42-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.5"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="30" id="m42-grid" patternunits="userSpaceOnUse" width="30"><circle cx="1.3" cy="1.3" fill="#f59e0b" opacity="0.10" r="1.3"></circle></pattern>
+<marker id="m42-ah" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#fbbf24"></path></marker>
+<marker id="m42-ahc" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#38bdf8"></path></marker>
+</defs>
+<rect fill="url(#m42-grid)" height="200" width="960" x="0" y="0"></rect>
+<!-- bruto -->
+<g filter="url(#m42-glow)"><rect fill="#241a08" height="56" rx="11" stroke="#f59e0b" stroke-width="2" width="96" x="18" y="72"></rect></g>
+<text fill="#fbbf24" font-family="Inter,sans-serif" font-size="12" font-weight="700" text-anchor="middle" x="66" y="98">raw</text>
+<text fill="#fcd9a0" font-family="Inter,sans-serif" font-size="10" text-anchor="middle" x="66" y="115">6 min</text>
+<!-- 5 fases -->
+<g font-family="Inter,sans-serif">
+<g filter="url(#m42-glow)"><rect fill="#1a1206" height="68" rx="11" stroke="url(#m42-grad)" stroke-width="2" width="118" x="140" y="66"></rect></g>
+<text fill="#fbbf24" font-size="12" font-weight="700" text-anchor="middle" x="199" y="92">1 · Cut</text>
+<text fill="#fcd9a0" font-size="9.5" text-anchor="middle" x="199" y="110">silences · errors</text>
+<g filter="url(#m42-glow)"><rect fill="#1a1206" height="68" rx="11" stroke="url(#m42-grad)" stroke-width="2" width="118" x="284" y="66"></rect></g>
+<text fill="#fbbf24" font-size="12" font-weight="700" text-anchor="middle" x="343" y="92">2 · Read+Treat</text>
+<text fill="#fcd9a0" font-size="9.5" text-anchor="middle" x="343" y="110">beat sheet</text>
+<g filter="url(#m42-glow)"><rect fill="#1a1206" height="68" rx="11" stroke="url(#m42-grad)" stroke-width="2" width="118" x="428" y="66"></rect></g>
+<text fill="#fbbf24" font-size="12" font-weight="700" text-anchor="middle" x="487" y="92">3 · Motion</text>
+<text fill="#fcd9a0" font-size="9.5" text-anchor="middle" x="487" y="110">+ Real B-roll</text>
+<g filter="url(#m42-glow)"><rect fill="#1a1206" height="68" rx="11" stroke="url(#m42-grad)" stroke-width="2" width="118" x="572" y="66"></rect></g>
+<text fill="#fbbf24" font-size="12" font-weight="700" text-anchor="middle" x="631" y="92">4 · SFX+QC</text>
+<text fill="#fcd9a0" font-size="9.5" text-anchor="middle" x="631" y="110">render</text>
+<g filter="url(#m42-glow)"><rect fill="#0e1b26" height="68" rx="11" stroke="#38bdf8" stroke-width="2" width="118" x="716" y="66"></rect></g>
+<text fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle" x="775" y="92">5 · Reviewer</text>
+<text fill="#bfe6ff" font-size="9.5" text-anchor="middle" x="775" y="110">PASS / FAIL</text>
+</g>
+<!-- setas -->
+<g fill="none" stroke="#fbbf24" stroke-width="2">
+<path d="M114,100 L140,100" marker-end="url(#m42-ah)"></path>
+<path d="M258,100 L284,100" marker-end="url(#m42-ah)"></path>
+<path d="M402,100 L428,100" marker-end="url(#m42-ah)"></path>
+<path d="M546,100 L572,100" marker-end="url(#m42-ah)"></path>
+<path d="M690,100 L716,100" marker-end="url(#m42-ahc)"></path>
+</g>
+<!-- reel aprovado -->
+<g filter="url(#m42-glow)"><rect fill="#0e2018" height="56" rx="11" stroke="#38bdf8" stroke-width="2" width="90" x="856" y="72"></rect></g>
+<text fill="#7dd3fc" font-family="Inter,sans-serif" font-size="12" font-weight="700" text-anchor="middle" x="901" y="96">reel</text>
+<text fill="#bfe6ff" font-family="Inter,sans-serif" font-size="9.5" text-anchor="middle" x="901" y="113">approved</text>
+<path d="M834,100 L856,100" fill="none" marker-end="url(#m42-ahc)" stroke="#38bdf8" stroke-width="2"></path>
+<!-- loop do revisor -->
+<path d="M775,134 C775,172 487,172 487,140" fill="none" marker-end="url(#m42-ahc)" stroke="#38bdf8" stroke-dasharray="5 5" stroke-width="1.8"></path>
+<text fill="#7dd3fc" font-family="Inter,sans-serif" font-size="10" text-anchor="middle" x="631" y="188">if FAIL, fix and repeat</text>
+</svg>
+<figcaption class="text-xs text-neutral-400 mt-2 text-center">The 5 phases in sequence (amber) and the reviewer that closes the loop (cyan): if it fails, the engine goes back, fixes the issue, and runs again—it only ships when it gets PASS.</figcaption>
+</figure>
+<!-- COPY-RUN: rodar o fluxo -->
+<div class="bg-dark-900 rounded-xl border border-dark-600 overflow-hidden mb-4">
+<div class="flex items-center justify-between px-4 py-2 border-b border-dark-600 bg-dark-800">
+<span class="text-xs font-mono text-neutral-400">Objective: run the 5 phases on a real video</span>
+<button class="text-xs px-2 py-1 rounded bg-dark-700 hover:bg-dark-600 text-neutral-300 transition-colors" onclick="var c=this.closest('div').parentNode.querySelector('code'); if(navigator.clipboard)navigator.clipboard.writeText(c.innerText); this.textContent='Copiado';" type="button">Copy</button>
+</div>
+<pre class="p-4 overflow-x-auto text-sm"><code class="font-mono text-amber-300">reel edita &lt;caminho-do-seu-video.mp4&gt;</code></pre>
+</div>
+<p class="text-neutral-400 text-sm inema-prose mb-6"><strong class="text-amber-400">How to verify:</strong> the skill reports each completed phase and returns the final reel. If the reviewer FAILs at any point, it fixes the issue and runs again—you only get it once it passes.</p>
+<!-- SEQUÊNCIA REAL: o que você digita -->
+<h3 class="text-lg font-semibold text-amber-400 mb-2">The real sequence, with a real workflow</h3>
+<p class="text-neutral-300 text-sm inema-prose mb-2">The simplest approach is to let the skill decide—it reads the raw footage and suggests treatments:</p>
+<div class="bg-dark-900 rounded-xl border border-dark-600 overflow-hidden mb-3">
+<div class="flex items-center justify-between px-4 py-2 border-b border-dark-600 bg-dark-800">
+<span class="text-xs font-mono text-neutral-400">you type in Claude Code</span>
+<button class="text-xs px-2 py-1 rounded bg-dark-700 hover:bg-dark-600 text-neutral-300 transition-colors" onclick="var c=this.closest('div').parentNode.querySelector('code'); if(navigator.clipboard)navigator.clipboard.writeText(c.innerText); this.textContent='Copiado';" type="button">Copy</button>
+</div>
+<pre class="p-4 overflow-x-auto text-sm"><code class="font-mono text-amber-300">reel edita ~/videos/bruto.mp4</code></pre>
+</div>
+<p class="text-neutral-300 text-sm inema-prose mb-2">Or already guiding the treatment on the same line, after a <span class="font-mono text-amber-300">—</span>:</p>
+<div class="bg-dark-900 rounded-xl border border-dark-600 overflow-hidden mb-4">
+<div class="flex items-center justify-between px-4 py-2 border-b border-dark-600 bg-dark-800">
+<span class="text-xs font-mono text-neutral-400">you type in Claude Code</span>
+<button class="text-xs px-2 py-1 rounded bg-dark-700 hover:bg-dark-600 text-neutral-300 transition-colors" onclick="var c=this.closest('div').parentNode.querySelector('code'); if(navigator.clipboard)navigator.clipboard.writeText(c.innerText); this.textContent='Copiado';" type="button">Copy</button>
+</div>
+<pre class="p-4 overflow-x-auto text-sm"><code class="font-mono text-amber-300">reel edita ~/videos/bruto.mp4 — tela dividida e cold open com o print do resultado</code></pre>
+</div>
+<p class="text-neutral-400 text-sm inema-prose mb-6">In both cases, the path is the same: it shows you the <strong class="text-amber-300">clean cut</strong> for you to approve → assembles motion, B-roll, captions, and SFX → runs the reviewer until <strong class="text-amber-300">PASS</strong> → delivers the final reel.</p>
+<p class="text-neutral-300 text-sm inema-prose mb-2" data-inema-block="m4-2-t1-p2"><span class="text-amber-400 font-semibold">Why learn:</span> seeing the whole workflow in a real video ties together everything you’ve learned. <span class="text-amber-400 font-semibold">Key concepts:</span> 5 phases, end-to-end workflow, single command.</p>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/30 text-amber-400 hover:bg-amber-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- ================= TÓPICO 2 ================= -->
+<section class="mb-16" data-inema-topic="modulo-4-2#topico-2" id="topico-2">
+<div class="flex items-center justify-between gap-3 mb-6">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl flex-shrink-0">2</span>
+<h2 class="text-2xl font-bold">🗺️ Beat Sheet: Map Segments and Pacing</h2>
+</div>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Flag a question about this topic" type="button"><span aria-hidden="true">?</span><span>I have a question</span></button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m4-2-t2-p1">
+              Before assembling it, the engine writes a <strong class="text-amber-400">beat sheet</strong>: a map of the video segments and the pacing of each one. Hook segments and lists call for quick cuts <strong class="text-amber-400">agile</strong>; a dense concept calls for <strong class="text-amber-400">air</strong>, time to settle. The pacing stops being guesswork and becomes a plan.
+            </p>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-5 mb-6">
+<p class="text-sm font-semibold text-blue-400 mb-1">New here? — “beat sheet”</p>
+<p class="text-neutral-300 text-sm inema-prose" data-inema-block="m4-2-t2-p2">Borrowed from cinema, the <strong>beat sheet</strong> is the list of narrative “beats”: each moment, how long it lasts, and what energy it has. Here, it’s the skeleton that says where to speed up, where to breathe, and which recipe each section gets.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-amber-900/20 rounded-xl border border-amber-500/30 p-6">
+<h4 class="font-bold text-amber-400 mb-3">⚡ Agile</h4>
+<p class="text-neutral-300 text-sm inema-prose">Hooks, lists, enumerations. Quick cuts, punches, changing B-roll—the energy keeps attention from dropping.</p>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+<h4 class="font-bold text-neutral-100 mb-3">🌬️ With breathing room</h4>
+<p class="text-neutral-300 text-sm inema-prose">Dense concept, an explanation that needs to land. Fewer elements, a little more time—but never more than 4s without movement.</p>
+</div>
+</div>
+<p class="text-neutral-300 text-sm inema-prose mb-2"><span class="text-amber-400 font-semibold">Why learn:</span> the beat sheet is what gives each segment the right treatment, without applying the same template to the whole video. <span class="text-amber-400 font-semibold">Key concepts:</span> beat sheet, pacing by section, editing plan.</p>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/30 text-amber-400 hover:bg-amber-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- ================= TÓPICO 3 ================= -->
+<section class="mb-16" data-inema-topic="modulo-4-2#topico-3" id="topico-3">
+<div class="flex items-center justify-between gap-3 mb-6">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl flex-shrink-0">3</span>
+<h2 class="text-2xl font-bold">🖼️ Real B-roll in Practice (Firecrawl)</h2>
+</div>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Flag a question about this topic" type="button"><span aria-hidden="true">?</span><span>I have a question</span></button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m4-2-t3-p1">
+              When the beat sheet says "here I mention repository X," the engine triggers the <strong class="text-amber-400">Firecrawl</strong>: it visits the URL, takes a real screenshot, and the engine inserts it into a <strong class="text-amber-400">browser frame</strong>, on the exact beat when you speak. No generic image — the real thing.
+            </p>
+<div class="space-y-4 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-1">You mention a repo/site</h4>
+<p class="text-neutral-300 text-sm inema-prose">The narration mentions a real source — a repository, a landing page, a dashboard.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-1">Firecrawl captures the real thing</h4>
+<p class="text-neutral-300 text-sm inema-prose">The tool fetches the page and brings back a real capture — with the name, numbers, whatever is there.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-1">Appears in a browser frame</h4>
+<p class="text-neutral-300 text-sm inema-prose">The insert appears framed like a browser tab, on the right beat, and exits when the narration continues.</p>
+</div>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">💡</span> Degrades gracefully</h3>
+<p class="text-neutral-300 text-sm inema-prose">Without Firecrawl configured, the engine doesn't stall: it falls back to a simpler supporting element instead of making up a fake image. Real is preferred, but never required to the point of breaking the workflow.</p>
+</div>
+<p class="text-neutral-300 text-sm inema-prose mb-2" data-inema-block="m4-2-t3-p2"><span class="text-amber-400 font-semibold">Why learn:</span> "showing the thing" is much more convincing than "talking about the thing". <span class="text-amber-400 font-semibold">Key concepts:</span> Firecrawl, real capture, framed insert.</p>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/30 text-amber-400 hover:bg-amber-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- ================= TÓPICO 4 ================= -->
+<section class="mb-16" data-inema-topic="modulo-4-2#topico-4" id="topico-4">
+<div class="flex items-center justify-between gap-3 mb-6">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl flex-shrink-0">4</span>
+<h2 class="text-2xl font-bold">🔊 SFX That “Produce”</h2>
+</div>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Flag a question about this topic" type="button"><span aria-hidden="true">?</span><span>I have a question</span></button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m4-2-t4-p1">
+              The inexpensive detail that makes the reel sound “produced”: sound effects <strong class="text-amber-400">under the voice</strong>. One <strong class="text-amber-400">whoosh</strong> goes through the transition and <strong class="text-amber-400">lands on a boom</strong> at the section cut. By default, <strong class="text-amber-400">without music</strong> — only occasional SFX, so they don’t compete with the speech.
+            </p>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h4 class="font-bold text-neutral-100 mb-4">The anatomy of a section cut</h4>
+<div class="flex flex-col sm:flex-row items-stretch gap-3 text-sm">
+<div class="flex-1 bg-amber-900/20 rounded-lg border border-amber-500/30 p-4 text-center"><div class="text-amber-400 font-semibold mb-1">whoosh</div><p class="text-neutral-300">rises during the transition</p></div>
+<div class="hidden sm:flex items-center text-amber-400 font-bold">→</div>
+<div class="flex-1 bg-amber-900/20 rounded-lg border border-amber-500/30 p-4 text-center"><div class="text-amber-400 font-semibold mb-1">boom</div><p class="text-neutral-300">lands in the new section</p></div>
+<div class="hidden sm:flex items-center text-amber-400 font-bold">→</div>
+<div class="flex-1 bg-dark-700 rounded-lg border border-dark-600 p-4 text-center"><div class="text-neutral-100 font-semibold mb-1">voice</div><p class="text-neutral-300">continues on top without blowing</p></div>
+</div>
+</div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-5 mb-6">
+<p class="text-sm font-semibold text-blue-400 mb-1">Why music is off by default</p>
+<p class="text-neutral-300 text-sm inema-prose" data-inema-block="m4-2-t4-p2">Poorly chosen music gets in the way more than it helps: it gets tiring, dates the video, and competes with the voice. A well-placed SFX reinforces the cut without competing. If you want music, you ask for it—but the default is clean.</p>
+</div>
+<p class="text-neutral-300 text-sm inema-prose mb-2"><span class="text-amber-400 font-semibold">Why learn:</span> Well-placed SFX is what separates "I shot this on my phone" from "this was produced." <span class="text-amber-400 font-semibold">Key concepts:</span> SFX, whoosh, boom, section cut.</p>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/30 text-amber-400 hover:bg-amber-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- ================= TÓPICO 5 ================= -->
+<section class="mb-16" data-inema-topic="modulo-4-2#topico-5" id="topico-5">
+<div class="flex items-center justify-between gap-3 mb-6">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl flex-shrink-0">5</span>
+<h2 class="text-2xl font-bold">🔁 Reviewer in a Loop Until PASS</h2>
+</div>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Flag a question about this topic" type="button"><span aria-hidden="true">?</span><span>I have a question</span></button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m4-2-t5-p1">
+              The final phase is a <strong class="text-amber-400">independent reviewer</strong>: a fresh pair of eyes that watches the reel and gives <strong class="text-amber-400">PASS or FAIL</strong>. It looks for <strong class="text-amber-400">repetitions</strong>, <strong class="text-amber-400">overlays</strong> (two elements competing on screen) and <strong class="text-amber-400">sync issues</strong> between speech, text, and SFX. If it fails, the engine fixes it and runs it again — until it passes.
+            </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 text-sm">
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-4"><span class="text-amber-400 font-semibold">Repetitions</span><p class="text-neutral-300 mt-1">The same shot, word, or B-roll appearing twice by mistake.</p></div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-4"><span class="text-amber-400 font-semibold">Overlays</span><p class="text-neutral-300 mt-1">Text over text, B-roll covering captions — elements competing for the frame.</p></div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-4"><span class="text-amber-400 font-semibold">Sync</span><p class="text-neutral-300 mt-1">The punch-in that lands off the beat of the narration, the SFX delayed at the cut.</p></div>
+</div>
+<p class="text-neutral-300 text-sm inema-prose mb-2">Some of what the reviewer audits can be automated with gates. The pacing gate, for example, fails if any segment goes more than 4s without a visual hit:</p>
+<!-- COPY-RUN: comporta de ritmo -->
+<div class="bg-dark-900 rounded-xl border border-dark-600 overflow-hidden mb-4">
+<div class="flex items-center justify-between px-4 py-2 border-b border-dark-600 bg-dark-800">
+<span class="text-xs font-mono text-neutral-400">Objective: run the pacing gate on the timeline</span>
+<button class="text-xs px-2 py-1 rounded bg-dark-700 hover:bg-dark-600 text-neutral-300 transition-colors" onclick="var c=this.closest('div').parentNode.querySelector('code'); if(navigator.clipboard)navigator.clipboard.writeText(c.innerText); this.textContent='Copiado';" type="button">Copy</button>
+</div>
+<pre class="p-4 overflow-x-auto text-sm"><code class="font-mono text-amber-300">python scripts/lint-timeline.py &lt;sua-timeline.json&gt;</code></pre>
+</div>
+<p class="text-neutral-400 text-sm inema-prose mb-6"><strong class="text-amber-400">How to verify:</strong> clean output and <span class="font-mono text-amber-300">exit 0</span> = passed. If any gap is &gt; 4s, the script points out the segment and fails — the gate that keeps a lukewarm reel from moving forward.</p>
+<div class="bg-gradient-to-br from-amber-900/30 to-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-amber-400 mb-2 flex items-center"><span class="mr-2">🔑</span> Why a separate reviewer works</h3>
+<p class="text-neutral-300 inema-prose">The person who assembled the reel is "in love" with their own work and can’t see the flaws. An independent reviewer comes in without that bias—they see what the editor missed. It’s the same reason you ask someone else to proofread your writing.</p>
+</div>
+<p class="text-neutral-300 text-sm inema-prose mb-2" data-inema-block="m4-2-t5-p2"><span class="text-amber-400 font-semibold">Why learn:</span> the review loop is what ensures quality without you having to hunt down errors one by one. <span class="text-amber-400 font-semibold">Key concepts:</span> reviewer, PASS/FAIL, quality loop.</p>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/30 text-amber-400 hover:bg-amber-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- ================= TÓPICO 6 ================= -->
+<section class="mb-16" data-inema-topic="modulo-4-2#topico-6" id="topico-6">
+<div class="flex items-center justify-between gap-3 mb-6">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl flex-shrink-0">6</span>
+<h2 class="text-2xl font-bold">✅ Final quality checklist</h2>
+</div>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Flag a question about this topic" type="button"><span aria-hidden="true">?</span><span>I have a question</span></button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m4-2-t6-p1">
+              The last gate before publishing. Every reel must pass this list—if an item fails, fix it first. Below are the checklist and a <strong class="text-amber-400">review prompt</strong> ready to paste into an independent reviewer.
+            </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-amber-900/20 rounded-xl border border-amber-500/30 p-6">
+<h4 class="font-bold text-amber-400 mb-4">✓ Passes if…</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-amber-400">✓</span><span>Pacing gate: nothing &gt; 4s without a visual hit</span></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400">✓</span><span>Cold open in the first 0–3s</span></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400">✓</span><span>Text at mic height (outside the lower third)</span></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400">✓</span><span>Output resolution = input resolution</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Fails if…</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>AI look: "THE PROBLEM / THE SOLUTION" pills</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Generic captions repeating the spoken words</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>On-screen repetitions or overlays</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Punch/SFX out of sync with the speech</span></li>
+</ul>
+</div>
+</div>
+<!-- COPY-RUN: prompt de revisão -->
+<div class="bg-dark-900 rounded-xl border border-dark-600 overflow-hidden mb-4">
+<div class="flex items-center justify-between px-4 py-2 border-b border-dark-600 bg-dark-800">
+<span class="text-xs font-mono text-neutral-400">Objective: paste into an independent reviewer and get PASS/FAIL</span>
+<button class="text-xs px-2 py-1 rounded bg-dark-700 hover:bg-dark-600 text-neutral-300 transition-colors" onclick="var c=this.closest('div').parentNode.querySelector('code'); if(navigator.clipboard)navigator.clipboard.writeText(c.innerText); this.textContent='Copiado';" type="button">Copy</button>
+</div>
+<pre class="p-4 overflow-x-auto text-sm"><code class="font-mono text-amber-300">Revise este reel como um editor cético. Para cada item, responda PASS ou FAIL com o timestamp:
+1. Ritmo: existe algum trecho &gt; 4s sem golpe visual (corte, zoom, chip, B-roll, reveal)?
+2. Cold open: os primeiros 0-3s fisgam (resultado, hook ou dado)?
+3. Texto: fica na altura do micro, fora do terco inferior?
+4. Audio: SFX sob a voz sem estourar; sem musica por padrao?
+5. Resolucao: a saida mantem a resolucao de entrada?
+6. Nao-IA: sem pilulas "O PROBLEMA/A SOLUCAO", sem legendinha generica, sem repeticoes/sobreposicoes?
+Se QUALQUER item = FAIL, liste a correcao e repita a revisao ate tudo dar PASS.</code></pre>
+</div>
+<p class="text-neutral-400 text-sm inema-prose mb-6"><strong class="text-amber-400">How to verify:</strong> run the prompt through a fresh reviewer (subagent or another session). Only publish when <strong>all</strong> all 6 items return PASS — any FAIL goes back for correction.</p>
+<p class="text-neutral-300 text-sm inema-prose mb-2" data-inema-block="m4-2-t6-p2"><span class="text-amber-400 font-semibold">Why learn:</span> this checklist is the practical summary of the entire course — each item is a rule you saw in the previous tracks. <span class="text-amber-400 font-semibold">Key concepts:</span> checklist, gate, review prompt.</p>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/20 border border-amber-500/30 text-amber-400 hover:bg-amber-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- RESUMO DO MÓDULO -->
+<section class="mb-4">
+<div class="bg-gradient-to-br from-amber-900/40 via-dark-800 to-dark-800 rounded-xl border border-amber-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">🏆</span> Module summary — and course</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">End-to-end flow</strong><span class="text-neutral-400"> — one command runs all 5 phases on a real video.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">The beat sheet sets the pace</strong><span class="text-neutral-400"> — a snappy hook, room to breathe for the concept, and a recipe for each segment.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Real footage + SFX deliver</strong><span class="text-neutral-400"> — Firecrawl B-roll and whoosh/boom under the voice, no music.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Only publish with PASS</strong><span class="text-neutral-400"> — the reviewer loop and final checklist are the quality gate.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-amber-400 mb-2">🎬 You’ve reached the end!</h3>
+<p class="text-neutral-300">You’ve completed all 4 tracks of Forja Reel—from the fundamentals to the real workflow. Now it’s time to generate your skill, point it at your first raw footage, and run <span class="font-mono text-amber-300">reel edits &lt;your-video.mp4&gt;</span>.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="index.html">← Track 4</a>
+<a class="flex-1 text-center px-6 py-3 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-500 transition-colors" href="../../index.html">🏁 Back to the Beginning</a>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-8">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>videos-edit Forja Reel — Course · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a></p></div>
+</footer>
+<script>
+    (function(){
+      var themeToggle=document.getElementById('theme-toggle'), darkIcon=document.getElementById('theme-toggle-dark-icon'), lightIcon=document.getElementById('theme-toggle-light-icon'), html=document.documentElement;
+      if (html.classList.contains('dark')) lightIcon.classList.remove('hidden'); else darkIcon.classList.remove('hidden');
+      if (themeToggle) themeToggle.addEventListener('click', function(){ darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden'); html.classList.toggle('dark'); var isDark=html.classList.contains('dark'); localStorage.setItem('theme', isDark?'dark':'light'); try{var p=JSON.parse(localStorage.getItem('inema.prefs')||'{}'); p.theme=isDark?'inema-dark':'claro'; localStorage.setItem('inema.prefs', JSON.stringify(p));}catch(e){} html.style.colorScheme=isDark?'dark':'light'; });
+    })();
+  </script>
+<script src="../../../assets/learn.js"></script>
+<script>if (window.INEMA && typeof window.INEMA.init === 'function') { window.INEMA.init(); }</script>
+</body>
+</html>

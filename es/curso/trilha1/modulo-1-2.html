@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="forja-reel" name="inema-course"/>
+<title>Módulo 1.2 · Qué cambia en tu forma de editar | videos-edit Forja Reel</title>
+<script>
+  (function () {
+    try {
+      var html = document.documentElement;
+      var DEF = { theme: 'inema-dark', font: 'inter', fontScale: 100, lineWidth: 68, leading: 1.7, accent: 'emerald' };
+      function clone(o){var r={};for(var x in o)r[x]=o[x];return r;}
+      var p = clone(DEF);
+      try {
+        var raw = localStorage.getItem('inema.prefs');
+        if (raw) { var parsed = JSON.parse(raw); if (parsed && typeof parsed === 'object') { for (var k in DEF) if (parsed[k] != null) p[k] = parsed[k]; } }
+        else { var legacy = localStorage.getItem('theme'); if (legacy === 'light') p.theme = 'claro'; else if (legacy === 'dark') p.theme = 'inema-dark'; }
+      } catch (e) { p = clone(DEF); }
+      var THEMES = { 'inema-dark':{dark:true,attr:null,cs:'dark'}, 'claro':{dark:false,attr:null,cs:'light'}, 'sepia':{dark:false,attr:'sepia',cs:'light'}, 'foco':{dark:null,attr:'foco',cs:null}, 'contraste':{dark:true,attr:'contraste',cs:'dark'} };
+      var t = THEMES[p.theme] || THEMES['inema-dark'];
+      if (t.dark === true) html.classList.add('dark'); else if (t.dark === false) html.classList.remove('dark');
+      if (t.attr) html.setAttribute('data-theme', t.attr); else html.removeAttribute('data-theme');
+      html.style.colorScheme = (t.cs ? t.cs : (html.classList.contains('dark') ? 'dark' : 'light'));
+      html.setAttribute('data-font', p.font || 'inter');
+      html.setAttribute('data-accent', p.accent || 'emerald');
+      var s = html.style; var scale = (+p.fontScale || 100);
+      s.setProperty('--inema-font-scale', (scale/100).toString());
+      s.setProperty('font-size', scale + '%');
+      s.setProperty('--measure', (+p.lineWidth || 68) + 'ch');
+      s.setProperty('--lh-body', (+p.leading || 1.7).toString());
+      var fam = p.font === 'system' ? 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif' : (p.font === 'leitura' ? '"Atkinson Hyperlegible", "Inter", system-ui, sans-serif' : '"Inter", system-ui, sans-serif');
+      s.setProperty('--font-body', fam);
+      var ACC = { emerald:[152,76,45], blue:[217,91,60], purple:[258,90,66], amber:[38,92,50], teal:[174,72,41], rose:[350,89,60] };
+      var a = ACC[p.accent] || ACC.emerald;
+      s.setProperty('--accent-h', a[0]+''); s.setProperty('--accent-s', a[1]+'%'); s.setProperty('--accent-l', a[2]+'%');
+      s.setProperty('--accent', 'hsl('+a[0]+' '+a[1]+'% '+a[2]+'%)');
+    } catch (err) { try { document.documentElement.classList.add('dark'); document.documentElement.style.colorScheme='dark'; } catch(e){} }
+  })();
+  </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } } }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="../../../assets/learn.css" rel="stylesheet"/>
+<script data-inema-manifest="" type="application/json">
+  {
+    "course": "forja-reel",
+    "tracks": [
+      { "n": "1", "title": "Fundamento", "modules": [
+        { "id": "1-1", "title": "O que e o Forja Reel", "topics": 7, "href": "curso/trilha1/modulo-1-1.html" },
+        { "id": "1-2", "title": "O que muda no seu jeito de editar", "topics": 6, "href": "curso/trilha1/modulo-1-2.html" }
+      ]},
+      { "n": "2", "title": "A skill por dentro", "modules": [
+        { "id": "2-1", "title": "As 5 fases do motor", "topics": 7, "href": "curso/trilha2/modulo-2-1.html" },
+        { "id": "2-2", "title": "Comportas, scripts e determinismo", "topics": 6, "href": "curso/trilha2/modulo-2-2.html" }
+      ]},
+      { "n": "3", "title": "Como usar", "modules": [
+        { "id": "3-1", "title": "Stack e instalacao", "topics": 6, "href": "curso/trilha3/modulo-3-1.html" },
+        { "id": "3-2", "title": "Entrevista, gerar sua skill e primeiro reel", "topics": 6, "href": "curso/trilha3/modulo-3-2.html" }
+      ]},
+      { "n": "4", "title": "Exemplos praticos", "modules": [
+        { "id": "4-1", "title": "As 6 receitas + cold open", "topics": 7, "href": "curso/trilha4/modulo-4-1.html" },
+        { "id": "4-2", "title": "Fluxo real ponta a ponta + QC", "topics": 6, "href": "curso/trilha4/modulo-4-2.html" }
+      ]}
+    ]
+  }
+  </script>
+<style>
+    body { font-family: var(--font-body, 'Inter', sans-serif); }
+    .dark body { background-color: #111827; }
+    [id] { scroll-margin-top: 5rem; }
+    svg[role="img"] { max-width: 100%; }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5,150,105,0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5,150,105,0.08); }
+    html:not(.dark) .bg-emerald-900\/20 { background-color: rgba(5,150,105,0.08); }
+    html:not(.dark) .bg-emerald-900\/30 { background-color: rgba(5,150,105,0.10); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5,150,105,0.25); }
+    html:not(.dark) .hover\:bg-emerald-500\/30:hover { background-color: rgba(5,150,105,0.18); }
+    html:not(.dark) .hover\:border-emerald-500\/30:hover { border-color: rgba(5,150,105,0.35); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .group:hover .group-hover\:text-emerald-400 { color: #059669; }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37,99,235,0.08); }
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-900\/20 { background-color: rgba(37,99,235,0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37,99,235,0.25); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124,58,237,0.08); }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217,119,6,0.08); }
+    html:not(.dark) .text-red-400 { color: #dc2626; }
+    html:not(.dark) .bg-red-900\/20 { background-color: rgba(220,38,38,0.07); }
+    html:not(.dark) .border-red-500\/30 { border-color: rgba(220,38,38,0.25); }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161,98,7,0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161,98,7,0.22); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255,255,255,0.95); }
+
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+  </style>
+<link href="https://inematds.github.io/videos-edit-curso/curso/trilha1/modulo-1-2.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/videos-edit-curso/en/curso/trilha1/modulo-1-2.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/videos-edit-curso/es/curso/trilha1/modulo-1-2.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha1/modulo-1-2.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="../../../en/curso/trilha1/modulo-1-2.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="modulo-1-2.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">ES</a></div>
+<a class="skip sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-2 focus:left-2 focus:px-4 focus:py-2 focus:bg-dark-800 focus:rounded-lg" href="#conteudo">Ir al contenido</a>
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14 gap-2">
+<div class="flex items-center space-x-3 min-w-0">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">🎬</span>
+<span class="font-bold text-lg hidden sm:inline">videos-edit Forja Reel</span>
+</a>
+<span class="text-neutral-600 hidden sm:inline">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+<span class="text-neutral-600 hidden sm:inline">-</span>
+<a class="text-amber-700 hover:text-amber-600 dark:text-slate-300 dark:hover:text-slate-200 text-sm font-medium" href="https://inema.pro" target="_blank">PRO</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-2.5 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10" href="index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamento</span></a>
+<a class="px-2.5 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">La skill</span></a>
+<a class="px-2.5 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Cómo usar</span></a>
+<a class="px-2.5 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Ejemplos</span></a>
+<button class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-neutral-300 hover:text-neutral-100 hover:bg-dark-700 transition-colors text-sm" data-inema-journey-open="" type="button"><span aria-hidden="true">◷</span><span class="hidden lg:inline">Recorrido</span><span class="inema-journey-badge hidden" data-count="0" data-inema-journey-badge=""></span></button>
+<button aria-expanded="false" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-neutral-300 hover:text-neutral-100 hover:bg-dark-700 transition-colors text-sm" data-inema-appearance-toggle="[data-inema-appearance]" type="button"><span aria-hidden="true">◑</span><span class="hidden lg:inline">Apariencia</span></button>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+<div class="inema-appearance-pop" data-inema-appearance="">
+<div aria-label="Tema" class="inema-segment" role="group"><button data-inema-set-theme="inema-dark">Oscuro</button><button data-inema-set-theme="claro">Claro</button><button data-inema-set-theme="sepia">Sepia</button><button data-inema-set-theme="foco">Enfoque</button><button data-inema-set-theme="contraste">Alto contraste</button></div>
+<div aria-label="Fuente" class="inema-segment" role="group"><button data-inema-set-font="inter">Inter</button><button data-inema-set-font="system">Sistema</button><button data-inema-set-font="leitura">Lectura</button></div>
+<div aria-label="Tamaño" class="inema-segment" role="group"><button data-inema-set-fontscale="100">A</button><button data-inema-set-fontscale="112">A+</button><button data-inema-set-fontscale="125">A++</button></div>
+<div aria-label="Anchura" class="inema-segment" role="group"><button data-inema-set-linewidth="60">Estrecho</button><button data-inema-set-linewidth="68">Medio</button><button data-inema-set-linewidth="75">Ancho</button></div>
+<div aria-label="Entre líneas" class="inema-segment" role="group"><button data-inema-set-leading="1.45">Compacto</button><button data-inema-set-leading="1.7">Cómodo</button></div>
+<div aria-label="Color de acento" class="inema-accent-grid" role="group"><button data-inema-set-accent="emerald" title="Verde"></button><button data-inema-set-accent="blue" title="Azul"></button><button data-inema-set-accent="purple" title="Morado"></button><button data-inema-set-accent="amber" title="Ámbar"></button><button data-inema-set-accent="teal" title="Teal"></button><button data-inema-set-accent="rose" title="Rosa"></button></div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav aria-label="Ruta de navegación" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-emerald-400" href="../../index.html">Inicio</a>
+<span>/</span>
+<a class="hover:text-emerald-400" href="index.html">Ruta 1</a>
+<span>/</span>
+<span class="text-emerald-400">Módulo 1.2</span>
+</div>
+</nav>
+<main id="conteudo">
+<!-- HEADER DO MÓDULO -->
+<header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">MÓDULO 1.2</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🔄 Qué cambia en tu forma de editar</h1>
+<p class="text-lg text-neutral-400 max-w-3xl inema-prose">Dejas de manipular herramientas y pasas a <strong class="text-neutral-200">decir lo que quiere</strong>. Son seis principios que reemplazan «arrastrar un clip a la línea de tiempo» por «describir el resultado y dejar que el motor lo ejecute». Cada uno define, en lenguaje sencillo, una regla que se repite a lo largo de todo el curso.</p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">6</div><div class="text-xs text-neutral-400">Temas</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">~35min</div><div class="text-xs text-neutral-400">Duración</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Básico</div><div class="text-xs text-neutral-400">Nivel</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Teoría</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+<div aria-label="Progreso del módulo 1.2" aria-valuemax="100" aria-valuemin="0" class="inema-meter max-w-md mt-6" data-inema-meter="modulo:1-2" role="progressbar">
+<div class="flex items-center justify-between text-sm mb-1"><span class="text-neutral-400">Secciones leídas en este módulo</span><span class="text-emerald-400 font-semibold"><span data-inema-meter-pct="">0%</span> · <span data-inema-meter-frac="">0 de 0</span></span></div>
+<div class="inema-bar"><div class="inema-bar__fill" data-inema-meter-fill=""></div></div>
+</div>
+</div>
+</header>
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="lg:grid lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-10">
+<!-- TOC -->
+<nav aria-label="Índice del módulo" class="hidden lg:block sticky top-24 self-start" data-inema-toc="">
+<p class="text-sm text-neutral-400 mb-2">Sección <span class="inema-toc-pos">1</span> de <span class="inema-toc-total">6</span></p>
+<ul class="space-y-1 text-sm">
+<li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-emerald-400 transition-colors" href="#topico-1">1. Especificación primero</a></li>
+<li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-emerald-400 transition-colors" href="#topico-2">2. Ritmo medido (≤4s)</a></li>
+<li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-emerald-400 transition-colors" href="#topico-3">3. B-roll real</a></li>
+<li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-emerald-400 transition-colors" href="#topico-4">4. Siempre el último plano</a></li>
+<li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-emerald-400 transition-colors" href="#topico-5">5. Adaptar al video</a></li>
+<li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-emerald-400 transition-colors" href="#topico-6">6. Resolución y altura del micrófono</a></li>
+</ul>
+</nav>
+<div class="min-w-0">
+<!-- ================= TÓPICO 1 ================= -->
+<section class="mb-16" data-inema-topic="modulo-1-2#topico-1" id="topico-1">
+<div class="flex items-center justify-between gap-3 mb-6">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl flex-shrink-0">1</span>
+<h2 class="text-2xl font-bold">📝 Primero la especificación, después la ejecución</h2>
+</div>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Marcar una duda en este tema" type="button"><span aria-hidden="true">?</span><span>Tengo una duda</span></button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m1-2-t1-p1">
+              El principal cambio de mentalidad: tú <strong class="text-emerald-400">dice lo que quiere antes</strong> — «reel de anuncio, ágil, con mi cold open» — y la skill decide <strong class="text-emerald-400">cómo</strong> llegar allí (qué cortes, qué animaciones, qué B-roll). En el editor tradicional, estás atrapado pensando en el "cómo" todo el tiempo: arrastrando clips, ajustando el cuadro. Aquí, el "cómo" es problema del motor.
+            </p>
+<div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-5 mb-6">
+<p class="text-sm font-semibold text-emerald-400 mb-1">¿Nuevo por aquí? — «especificación» y «EL CÓMO»</p>
+<p class="text-neutral-300 text-sm inema-prose" data-inema-block="m1-2-t1-p2">A <strong>especificación</strong> es la descripción del resultado que quieres, en palabras — no con clics. El <strong>"cómo"</strong> (la ejecución) son los pasos técnicos para llegar a este resultado: cortar aquí, animar allá, poner tal subtítulo. El cambio es: tú te encargas del <em>qué</em>; la skill se encarga del <em>cómo</em>.</p>
+</div>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-2 flex items-center"><span class="mr-2">🎯</span> La regla de oro</h3>
+<p class="text-neutral-300 inema-prose">Describe el <strong>destino</strong>, no el camino. Cuando especificas bien ("quiero ritmo de noticias, serio, sin música"), el motor tiene libertad para armar algo mejor que si dirigieras cada corte al detalle.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 text-sm">
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-4"><span class="text-emerald-400 font-semibold">Qué es</span><p class="text-neutral-300 mt-1">Cambiar «operar la herramienta» por «describir el resultado» — intención antes que ejecución.</p></div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-4"><span class="text-emerald-400 font-semibold">Por qué aprender</span><p class="text-neutral-300 mt-1">Piensas como director, no como operador. Menos tiempo en detalles técnicos y más en la intención.</p></div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-4"><span class="text-emerald-400 font-semibold">Conceptos clave</span><p class="text-neutral-300 mt-1">Especificación, intención, ejecución, el qué frente al cómo.</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Marcar como leído</span>
+</button>
+</div>
+</section>
+<!-- ================= TÓPICO 2 ================= -->
+<section class="mb-16" data-inema-topic="modulo-1-2#topico-2" id="topico-2">
+<div class="flex items-center justify-between gap-3 mb-6">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl flex-shrink-0">2</span>
+<h2 class="text-2xl font-bold">⏱️ Ritmo medido: máximo 4s sin impacto visual</h2>
+</div>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Marcar una duda en este tema" type="button"><span aria-hidden="true">?</span><span>Tengo una duda</span></button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m1-2-t2-p1">
+              Una regla estricta del motor: la pantalla <strong class="text-emerald-400">nunca permanece quieta más de 4 segundos</strong>. En cada ventana de hasta 4s tiene que entrar un <strong class="text-emerald-400">golpe visual</strong> — algo que renueva la imagen y mantiene la mirada. No es un adorno: es lo que evita que la persona deslice el dedo y se vaya.
+            </p>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-5 mb-6">
+<p class="text-sm font-semibold text-blue-400 mb-1">¿Nuevo por aquí? — qué cuenta como «impacto visual»</p>
+<p class="text-neutral-300 text-sm inema-prose" data-inema-block="m1-2-t2-p2">Un golpe visual es cualquier cambio que renueva la pantalla: un <strong>corte</strong> (cambio de plano), un <strong>zoom</strong> (acercamiento/alejamiento), un <strong>chip</strong> (una etiqueta que aparece), un <strong>B-roll</strong> (imagen de apoyo superpuesta) o un <strong>reveal</strong> (algo que aparece con animación). Cualquiera de estos reinicia el cronómetro de 4 segundos.</p>
+</div>
+<!-- SVG: timeline com golpes visuais a cada <=4s -->
+<figure class="rounded-2xl border border-emerald-500/30 bg-dark-900/40 p-3 sm:p-4 mb-6 overflow-hidden">
+<svg aria-label="Línea de tiempo de un reel en el que aparece un golpe visual cada cuatro segundos como máximo: corte, zoom, chip, B-roll y reveal, para mantener la pantalla siempre en movimiento" class="w-full h-auto" role="img" viewbox="0 0 900 190">
+<defs>
+<lineargradient id="m12a-grad" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#34d399"></stop><stop offset="1" stop-color="#10b981"></stop></lineargradient>
+<filter height="180%" id="m12a-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="30" id="m12a-grid" patternunits="userSpaceOnUse" width="30"><circle cx="1.3" cy="1.3" fill="#10b981" opacity="0.12" r="1.3"></circle></pattern>
+</defs>
+<rect fill="url(#m12a-grid)" height="190" width="900" x="0" y="0"></rect>
+<!-- barra da timeline -->
+<g filter="url(#m12a-glow)"><rect fill="url(#m12a-grad)" height="10" rx="5" width="820" x="40" y="92"></rect></g>
+<!-- ticks de segundos -->
+<g fill="#64748b" font-family="Inter,sans-serif" font-size="11" text-anchor="middle">
+<text x="40" y="130">0s</text>
+<text x="205" y="130">4s</text>
+<text x="370" y="130">8s</text>
+<text x="535" y="130">12s</text>
+<text x="700" y="130">16s</text>
+<text x="860" y="130">20s</text>
+</g>
+<g stroke="#334155" stroke-width="1">
+<line x1="205" x2="205" y1="88" y2="106"></line>
+<line x1="370" x2="370" y1="88" y2="106"></line>
+<line x1="535" x2="535" y1="88" y2="106"></line>
+<line x1="700" x2="700" y1="88" y2="106"></line>
+</g>
+<!-- golpes visuais (marcadores acima) -->
+<g font-family="Inter,sans-serif" font-size="12" font-weight="700" text-anchor="middle">
+<g filter="url(#m12a-glow)"><circle cx="122" cy="97" fill="#0e2018" r="9" stroke="#34d399" stroke-width="2.5"></circle></g>
+<text fill="#a7f3d0" font-size="11" x="122" y="60">corte</text>
+<line stroke="#34d399" stroke-width="1.5" x1="122" x2="122" y1="70" y2="88"></line>
+<g filter="url(#m12a-glow)"><circle cx="287" cy="97" fill="#0e2018" r="9" stroke="#34d399" stroke-width="2.5"></circle></g>
+<text fill="#a7f3d0" font-size="11" x="287" y="60">zoom</text>
+<line stroke="#34d399" stroke-width="1.5" x1="287" x2="287" y1="70" y2="88"></line>
+<g filter="url(#m12a-glow)"><circle cx="452" cy="97" fill="#071a2b" r="9" stroke="#38bdf8" stroke-width="2.5"></circle></g>
+<text fill="#bae6fd" font-size="11" x="452" y="60">chip</text>
+<line stroke="#38bdf8" stroke-width="1.5" x1="452" x2="452" y1="70" y2="88"></line>
+<g filter="url(#m12a-glow)"><circle cx="617" cy="97" fill="#071a2b" r="9" stroke="#38bdf8" stroke-width="2.5"></circle></g>
+<text fill="#bae6fd" font-size="11" x="617" y="60">B-roll</text>
+<line stroke="#38bdf8" stroke-width="1.5" x1="617" x2="617" y1="70" y2="88"></line>
+<g filter="url(#m12a-glow)"><circle cx="782" cy="97" fill="#0e2018" r="9" stroke="#34d399" stroke-width="2.5"></circle></g>
+<text fill="#a7f3d0" font-size="11" x="782" y="60">reveal</text>
+<line stroke="#34d399" stroke-width="1.5" x1="782" x2="782" y1="70" y2="88"></line>
+</g>
+<text fill="#34d399" font-family="Inter,sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="450" y="165">Cada segmento ≤ 4s → un impacto nuevo. La pantalla nunca «descansa».</text>
+</svg>
+<figcaption class="text-xs text-neutral-400 mt-2 text-center">Verde = acciones del motor (corte, zoom, reveal); cian = acciones de contenido (chip, B-roll). Entre dos marcadores nunca pasan más de 4 segundos.</figcaption>
+</figure>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">💡</span> Consejo de lectura</h3>
+<p class="text-neutral-300 text-sm inema-prose">Al volver a ver un reel tuyo, cuenta «mil uno, mil dos…». Si pasan más de cuatro segundos sin que cambie nada en pantalla, ahí es donde el público se va. El motor trata ese intervalo como <strong>error</strong>, no como estilo.</p>
+</div>
+<p class="text-neutral-300 text-sm inema-prose mb-2" data-inema-block="m1-2-t2-p3"><span class="text-emerald-400 font-semibold">Conceptos clave:</span> golpe visual, ventana de 4s, gap (el tiempo detenido que se convierte en error), retención.</p>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Marcar como leído</span>
+</button>
+</div>
+</section>
+<!-- ================= TÓPICO 3 ================= -->
+<section class="mb-16" data-inema-topic="modulo-1-2#topico-3" id="topico-3">
+<div class="flex items-center justify-between gap-3 mb-6">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl flex-shrink-0">3</span>
+<h2 class="text-2xl font-bold">🎥 B-roll real en lugar del genérico</h2>
+</div>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Marcar una duda en este tema" type="button"><span aria-hidden="true">?</span><span>Tengo una duda</span></button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m1-2-t3-p1">
+              Cuando citas un repositorio, un sitio web o un producto, el motor no coloca encima una imagen genérica de banco. Busca la <strong class="text-emerald-400">captura real</strong> de aquello — la propia página, el propio repo — y lo inserta en un marco de navegador. Eso cambia la percepción: en vez de «video bonito», se convierte en «video que muestra la cosa de verdad».
+            </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ B-roll real (búsqueda)</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Captura de la página/repo que mencionaste</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Enmarcado en un navegador, con credibilidad</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Prueba visual: "esto es exactamente lo que estoy diciendo"</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ B-roll genérico (evitar)</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Foto de banco de imágenes de «código en pantalla»</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Ilustración que no es el producto real</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Aspecto de plantilla: llena espacio, no demuestra nada</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-2 flex items-center"><span class="mr-2">🔍</span> Por qué importa</h3>
+<p class="text-neutral-300 inema-prose">El B-roll real es una de las cosas que más distingue un reel «editado por personas» de uno «armado con una plantilla». Mostrar la fuente verdadera da autoridad y es difícil de fingir; por eso el motor prioriza la captura antes que cualquier imagen genérica.</p>
+</div>
+<p class="text-neutral-300 text-sm inema-prose mb-2" data-inema-block="m1-2-t3-p2"><span class="text-emerald-400 font-semibold">Conceptos clave:</span> B-roll real, captura, marco de navegador, prueba visual.</p>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Marcar como leído</span>
+</button>
+</div>
+</section>
+<!-- ================= TÓPICO 4 ================= -->
+<section class="mb-16" data-inema-topic="modulo-1-2#topico-4" id="topico-4">
+<div class="flex items-center justify-between gap-3 mb-6">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl flex-shrink-0">4</span>
+<h2 class="text-2xl font-bold">🔁 Siempre la última toma</h2>
+</div>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Marcar una duda en este tema" type="button"><span aria-hidden="true">?</span><span>Tengo una duda</span></button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m1-2-t4-p1">
+              Esto te da libertad al grabar: ¿te equivocaste al decir una frase? <strong class="text-emerald-400">Repite y sigue</strong>. Cuando la misma voz aparece varias veces seguidas, el motor entiende que las anteriores fueron intentos y <strong class="text-emerald-400">quédate con la última buena</strong>. No necesitas parar, cortar ni volver a grabar desde cero: grabas «de corrido» y la skill lo limpia.
+            </p>
+<!-- Timeline de tomadas -->
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<h4 class="font-semibold text-neutral-100 mb-4">Cómo lee el motor tres intentos de la misma frase</h4>
+<div class="space-y-3">
+<div class="flex items-center gap-3">
+<span class="flex-shrink-0 w-16 text-center text-xs font-mono px-2 py-1 rounded bg-red-900/20 text-red-400 border border-red-500/30">toma 1</span>
+<span class="text-neutral-400 text-sm inema-prose">"Forja Reel, él…" <em>(se trabó)</em></span>
+<span class="ml-auto text-red-400 text-sm">descarta ✗</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="flex-shrink-0 w-16 text-center text-xs font-mono px-2 py-1 rounded bg-red-900/20 text-red-400 border border-red-500/30">toma 2</span>
+<span class="text-neutral-400 text-sm inema-prose">"Forja Reel transfor— ay" <em>(se equivocó)</em></span>
+<span class="ml-auto text-red-400 text-sm">descarta ✗</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="flex-shrink-0 w-16 text-center text-xs font-mono px-2 py-1 rounded bg-emerald-900/20 text-emerald-400 border border-emerald-500/30">toma 3</span>
+<span class="text-neutral-300 text-sm inema-prose">"Forja Reel transforma tu material bruto en un reel." <em>(buena)</em></span>
+<span class="ml-auto text-emerald-400 text-sm font-semibold">mantiene ✓</span>
+</div>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">💡</span> Cómo aprovecharlo durante la grabación</h3>
+<p class="text-neutral-300 text-sm inema-prose">No te detengas para «volver a grabar correctamente». Empieza de nuevo la <em>la misma</em> frase justo después, en secuencia. Decir la versión correcta al final es la señal que usa el motor para elegir: cuanto más limpia la última, mejor el corte.</p>
+</div>
+<p class="text-neutral-300 text-sm inema-prose mb-2" data-inema-block="m1-2-t4-p2"><span class="text-emerald-400 font-semibold">Conceptos clave:</span> toma, repetición, "la última buena", grabar de corrido.</p>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Marcar como leído</span>
+</button>
+</div>
+</section>
+<!-- ================= TÓPICO 5 ================= -->
+<section class="mb-16" data-inema-topic="modulo-1-2#topico-5" id="topico-5">
+<div class="flex items-center justify-between gap-3 mb-6">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl flex-shrink-0">5</span>
+<h2 class="text-2xl font-bold">🎛️ Adaptar al video, no seguir un molde fijo</h2>
+</div>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Marcar una duda en este tema" type="button"><span aria-hidden="true">?</span><span>Tengo una duda</span></button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m1-2-t5-p1">
+              Un molde fijo trata todo por igual — y por eso mismo «huele a IA». El motor hace lo contrario: <strong class="text-emerald-400">lee el video y propone un tratamiento para ese contenido</strong>. Una noticia requiere seriedad y un ritmo urgente; un anuncio requiere energía y un cold open vendedor. El mismo proceso, resultados diferentes.
+            </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+<h3 class="font-bold text-neutral-100 mb-2 flex items-center"><span class="mr-2">📰</span> Noticia</h3>
+<ul class="space-y-2 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Tono serio, sin música llamativa</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Ritmo de urgencia, directo al grano</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>B-roll de la fuente real de la noticia</span></li>
+</ul>
+</div>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6">
+<h3 class="font-bold text-emerald-400 mb-2 flex items-center"><span class="mr-2">📣</span> Anuncio</h3>
+<ul class="space-y-2 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Energía alta, cold open vendedor</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Ritmo con impacto, motion más presente</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400 mt-0.5">•</span><span>Enfoque en el beneficio y el llamado a la acción</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-2 flex items-center"><span class="mr-2">🧭</span> La idea central</h3>
+<p class="text-neutral-300 inema-prose">No existe «la plantilla de Forja Reel». Existe un motor que <strong>analiza antes de montar</strong> y elige el tratamiento adecuado para el contenido que tienes. Eso hace que cada reel parezca pensado, no hecho en serie.</p>
+</div>
+<p class="text-neutral-300 text-sm inema-prose mb-2" data-inema-block="m1-2-t5-p2"><span class="text-emerald-400 font-semibold">Conceptos clave:</span> tratamiento, molde fijo, análisis del contenido, adaptación.</p>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Marcar como leído</span>
+</button>
+</div>
+</section>
+<!-- ================= TÓPICO 6 ================= -->
+<section class="mb-16" data-inema-topic="modulo-1-2#topico-6" id="topico-6">
+<div class="flex items-center justify-between gap-3 mb-6">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl flex-shrink-0">6</span>
+<h2 class="text-2xl font-bold">📐 Resolución mantenida y texto a la altura del micrófono</h2>
+</div>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Marcar una duda en este tema" type="button"><span aria-hidden="true">?</span><span>Tengo una duda</span></button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m1-2-t6-p1">
+              Dos detalles de acabado que solemos pasar por alto con las prisas. Primero: el motor <strong class="text-emerald-400">mantiene la resolución de entrada</strong> — si grabaste en 2K, sale en 2K; si grabaste en 4K, sale en 4K, sin «comprimir» la calidad. Segundo: la <strong class="text-emerald-400">el subtítulo queda a la altura del micro</strong>, no pegada abajo, donde la barra de la app la tapa.
+            </p>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-5 mb-6">
+<p class="text-sm font-semibold text-blue-400 mb-1">¿Nuevo por aquí? — «resolución», «2K/4K» y «altura del micrófono»</p>
+<p class="text-neutral-300 text-sm inema-prose" data-inema-block="m1-2-t6-p2"><strong>Resolución</strong> es la cantidad de píxeles de la imagen; cuanto mayor sea, más nítida. <strong>2K/4K</strong> son dos niveles comunes (4K tiene cerca de cuatro veces más píxeles que Full HD). <strong>"Altura del micro"</strong> es la franja vertical donde debe ir el subtítulo: por encima de la barra de botones de Instagram/TikTok, aproximadamente a la altura de la boca de la persona que habla; así nadie tiene que estirar el cuello ni pierde texto debajo de la interfaz.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Lo que garantiza el motor</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Entró 2K, sale 2K · entró 4K, sale 4K</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Subtítulo en la zona segura, por encima de la barra de la app</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Palabra clave del subtítulo destacada</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Los errores que evita</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Exportar en un tamaño menor y perder nitidez</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Subtítulo pegado abajo, cubierto por la interfaz</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Texto demasiado pequeño para leer en el celular</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-2 flex items-center"><span class="mr-2">✅</span> Cierra la Trilha 1</h3>
+<p class="text-neutral-300 inema-prose">El detalle de acabado es lo que separa "casi pro" de "pro". Mantener la resolución y poner los subtítulos en el lugar correcto cuesta poco y equivocarse sale caro: el motor se encarga de ambas cosas por defecto para que no se te pasen por alto con las prisas.</p>
+</div>
+<p class="text-neutral-300 text-sm inema-prose mb-2" data-inema-block="m1-2-t6-p3"><span class="text-emerald-400 font-semibold">Conceptos clave:</span> resolución, 2K/4K, zona segura, altura del micrófono.</p>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Marcar como leído</span>
+</button>
+</div>
+</section>
+<!-- RESUMO DO MÓDULO -->
+<section class="mb-4">
+<div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✅</span> Resumen del módulo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Especifica, no opera</strong><span class="text-neutral-400"> — tú dices qué; la skill decide cómo.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Nada de más de 4s sin movimiento</strong><span class="text-neutral-400"> — un corte, zoom, chip, B-roll o reveal renuevan la pantalla.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">B-roll real y toma final</strong><span class="text-neutral-400"> — captura real por encima de lo genérico; graba de corrido, la skill se queda con la buena.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Se adapta y termina bien</strong><span class="text-neutral-400"> — tratamiento según el contenido, resolución conservada y subtítulos a la altura del micrófono.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-emerald-400 mb-2">Siguiente módulo:</h3>
+<p class="text-neutral-300">Este es el último módulo de la Trilha 1. Ya dominas el <em>por qué</em> e o <em>qué</em> — ahora sigue a la <strong class="text-neutral-100">Ruta 2 · La skill por dentro</strong>, donde abrimos el motor y vemos las 5 fases en funcionamiento.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="modulo-1-1.html">← Volver: 1.1</a>
+<a class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors" href="../trilha2/index.html">Siguiente: Ruta 2 →</a>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-8">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>videos-edit Forja Reel — Curso · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a></p></div>
+</footer>
+<script>
+    (function(){
+      var themeToggle=document.getElementById('theme-toggle'), darkIcon=document.getElementById('theme-toggle-dark-icon'), lightIcon=document.getElementById('theme-toggle-light-icon'), html=document.documentElement;
+      if (html.classList.contains('dark')) lightIcon.classList.remove('hidden'); else darkIcon.classList.remove('hidden');
+      if (themeToggle) themeToggle.addEventListener('click', function(){ darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden'); html.classList.toggle('dark'); var isDark=html.classList.contains('dark'); localStorage.setItem('theme', isDark?'dark':'light'); try{var p=JSON.parse(localStorage.getItem('inema.prefs')||'{}'); p.theme=isDark?'inema-dark':'claro'; localStorage.setItem('inema.prefs', JSON.stringify(p));}catch(e){} html.style.colorScheme=isDark?'dark':'light'; });
+    })();
+  </script>
+<script src="../../../assets/learn.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+      if (window.INEMA && typeof window.INEMA.init === 'function') { window.INEMA.init(); }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="forja-reel" name="inema-course"/>
+<title>Module 3.2 · Interview, Generate Your Skill, and First Reel | videos-edit Forja Reel</title>
+<script>
+  (function () {
+    try {
+      var html = document.documentElement;
+      var DEF = { theme: 'inema-dark', font: 'inter', fontScale: 100, lineWidth: 68, leading: 1.7, accent: 'purple' };
+      function clone(o){var r={};for(var x in o)r[x]=o[x];return r;}
+      var p = clone(DEF);
+      try {
+        var raw = localStorage.getItem('inema.prefs');
+        if (raw) { var parsed = JSON.parse(raw); if (parsed && typeof parsed === 'object') { for (var k in DEF) if (parsed[k] != null) p[k] = parsed[k]; } }
+        else { var legacy = localStorage.getItem('theme'); if (legacy === 'light') p.theme = 'claro'; else if (legacy === 'dark') p.theme = 'inema-dark'; }
+      } catch (e) { p = clone(DEF); }
+      var THEMES = { 'inema-dark':{dark:true,attr:null,cs:'dark'}, 'claro':{dark:false,attr:null,cs:'light'}, 'sepia':{dark:false,attr:'sepia',cs:'light'}, 'foco':{dark:null,attr:'foco',cs:null}, 'contraste':{dark:true,attr:'contraste',cs:'dark'} };
+      var t = THEMES[p.theme] || THEMES['inema-dark'];
+      if (t.dark === true) html.classList.add('dark'); else if (t.dark === false) html.classList.remove('dark');
+      if (t.attr) html.setAttribute('data-theme', t.attr); else html.removeAttribute('data-theme');
+      html.style.colorScheme = (t.cs ? t.cs : (html.classList.contains('dark') ? 'dark' : 'light'));
+      html.setAttribute('data-font', p.font || 'inter');
+      html.setAttribute('data-accent', p.accent || 'purple');
+      var s = html.style; var scale = (+p.fontScale || 100);
+      s.setProperty('--inema-font-scale', (scale/100).toString());
+      s.setProperty('font-size', scale + '%');
+      s.setProperty('--measure', (+p.lineWidth || 68) + 'ch');
+      s.setProperty('--lh-body', (+p.leading || 1.7).toString());
+      var fam = p.font === 'system' ? 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif' : (p.font === 'leitura' ? '"Atkinson Hyperlegible", "Inter", system-ui, sans-serif' : '"Inter", system-ui, sans-serif');
+      s.setProperty('--font-body', fam);
+      var ACC = { emerald:[152,76,45], blue:[217,91,60], purple:[258,90,66], amber:[38,92,50], teal:[174,72,41], rose:[350,89,60] };
+      var a = ACC[p.accent] || ACC.purple;
+      s.setProperty('--accent-h', a[0]+''); s.setProperty('--accent-s', a[1]+'%'); s.setProperty('--accent-l', a[2]+'%');
+      s.setProperty('--accent', 'hsl('+a[0]+' '+a[1]+'% '+a[2]+'%)');
+    } catch (err) { try { document.documentElement.classList.add('dark'); document.documentElement.style.colorScheme='dark'; } catch(e){} }
+  })();
+  </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } } }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="../../../assets/learn.css" rel="stylesheet"/>
+<script data-inema-manifest="" type="application/json">
+  {
+    "course": "forja-reel",
+    "tracks": [
+      { "n": "1", "title": "Fundamento", "modules": [
+        { "id": "1-1", "title": "O que e o Forja Reel", "topics": 7, "href": "curso/trilha1/modulo-1-1.html" },
+        { "id": "1-2", "title": "O que muda no seu jeito de editar", "topics": 6, "href": "curso/trilha1/modulo-1-2.html" }
+      ]},
+      { "n": "2", "title": "A skill por dentro", "modules": [
+        { "id": "2-1", "title": "As 5 fases do motor", "topics": 7, "href": "curso/trilha2/modulo-2-1.html" },
+        { "id": "2-2", "title": "Comportas, scripts e determinismo", "topics": 6, "href": "curso/trilha2/modulo-2-2.html" }
+      ]},
+      { "n": "3", "title": "Como usar", "modules": [
+        { "id": "3-1", "title": "Stack e instalacao", "topics": 6, "href": "curso/trilha3/modulo-3-1.html" },
+        { "id": "3-2", "title": "Entrevista, gerar sua skill e primeiro reel", "topics": 6, "href": "curso/trilha3/modulo-3-2.html" }
+      ]},
+      { "n": "4", "title": "Exemplos praticos", "modules": [
+        { "id": "4-1", "title": "As 6 receitas + cold open", "topics": 7, "href": "curso/trilha4/modulo-4-1.html" },
+        { "id": "4-2", "title": "Fluxo real ponta a ponta + QC", "topics": 6, "href": "curso/trilha4/modulo-4-2.html" }
+      ]}
+    ]
+  }
+  </script>
+<style>
+    body { font-family: var(--font-body, 'Inter', sans-serif); }
+    .dark body { background-color: #111827; }
+    [id] { scroll-margin-top: 5rem; }
+    svg[role="img"] { max-width: 100%; }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5,150,105,0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5,150,105,0.08); }
+    html:not(.dark) .bg-emerald-900\/20 { background-color: rgba(5,150,105,0.08); }
+    html:not(.dark) .bg-emerald-900\/30 { background-color: rgba(5,150,105,0.10); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5,150,105,0.25); }
+    html:not(.dark) .hover\:bg-emerald-500\/30:hover { background-color: rgba(5,150,105,0.18); }
+    html:not(.dark) .hover\:border-emerald-500\/30:hover { border-color: rgba(5,150,105,0.35); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .group:hover .group-hover\:text-emerald-400 { color: #059669; }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37,99,235,0.08); }
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-900\/20 { background-color: rgba(37,99,235,0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37,99,235,0.25); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124,58,237,0.08); }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217,119,6,0.08); }
+    html:not(.dark) .text-red-400 { color: #dc2626; }
+    html:not(.dark) .bg-red-900\/20 { background-color: rgba(220,38,38,0.07); }
+    html:not(.dark) .border-red-500\/30 { border-color: rgba(220,38,38,0.25); }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161,98,7,0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161,98,7,0.22); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161,98,7,0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255,255,255,0.95); }
+
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+  </style>
+<link href="https://inematds.github.io/videos-edit-curso/curso/trilha3/modulo-3-2.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/videos-edit-curso/en/curso/trilha3/modulo-3-2.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/videos-edit-curso/es/curso/trilha3/modulo-3-2.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha3/modulo-3-2.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="modulo-3-2.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">EN</a><a href="../../../es/curso/trilha3/modulo-3-2.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<a class="skip sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-2 focus:left-2 focus:px-4 focus:py-2 focus:bg-dark-800 focus:rounded-lg" href="#conteudo">Skip to content</a>
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14 gap-2">
+<div class="flex items-center space-x-3 min-w-0">
+<a class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">🎬</span>
+<span class="font-bold text-lg hidden sm:inline">videos-edit Forja Reel</span>
+</a>
+<span class="text-neutral-600 hidden sm:inline">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" target="_blank">INEMA.CLUB</a>
+<span class="text-neutral-600 hidden sm:inline">-</span>
+<a class="text-amber-700 hover:text-amber-600 dark:text-slate-300 dark:hover:text-slate-200 text-sm font-medium" href="https://inema.pro" target="_blank">PRO</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-2.5 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Foundation</span></a>
+<a class="px-2.5 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">The skill</span></a>
+<a class="px-2.5 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10" href="index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">How to use</span></a>
+<a class="px-2.5 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Examples</span></a>
+<button class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-neutral-300 hover:text-neutral-100 hover:bg-dark-700 transition-colors text-sm" data-inema-journey-open="" type="button"><span aria-hidden="true">◷</span><span class="hidden lg:inline">Journey</span><span class="inema-journey-badge hidden" data-count="0" data-inema-journey-badge=""></span></button>
+<button aria-expanded="false" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-neutral-300 hover:text-neutral-100 hover:bg-dark-700 transition-colors text-sm" data-inema-appearance-toggle="[data-inema-appearance]" type="button"><span aria-hidden="true">◑</span><span class="hidden lg:inline">Appearance</span></button>
+<button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+<div class="inema-appearance-pop" data-inema-appearance="">
+<div aria-label="Theme" class="inema-segment" role="group"><button data-inema-set-theme="inema-dark">Dark</button><button data-inema-set-theme="claro">Clear</button><button data-inema-set-theme="sepia">Sepia</button><button data-inema-set-theme="foco">Focus</button><button data-inema-set-theme="contraste">High contrast</button></div>
+<div aria-label="Source" class="inema-segment" role="group"><button data-inema-set-font="inter">Inter</button><button data-inema-set-font="system">System</button><button data-inema-set-font="leitura">Reading</button></div>
+<div aria-label="Size" class="inema-segment" role="group"><button data-inema-set-fontscale="100">A</button><button data-inema-set-fontscale="112">A+</button><button data-inema-set-fontscale="125">A++</button></div>
+<div aria-label="Width" class="inema-segment" role="group"><button data-inema-set-linewidth="60">Narrow</button><button data-inema-set-linewidth="68">Intermediate</button><button data-inema-set-linewidth="75">Wide</button></div>
+<div aria-label="Line spacing" class="inema-segment" role="group"><button data-inema-set-leading="1.45">Compact</button><button data-inema-set-leading="1.7">Comfortable</button></div>
+<div aria-label="Accent color" class="inema-accent-grid" role="group"><button data-inema-set-accent="emerald" title="Green"></button><button data-inema-set-accent="blue" title="Blue"></button><button data-inema-set-accent="purple" title="Purple"></button><button data-inema-set-accent="amber" title="Amber"></button><button data-inema-set-accent="teal" title="Teal"></button><button data-inema-set-accent="rose" title="Pink"></button></div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav aria-label="Navigation track" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-purple-400" href="../../index.html">Start</a>
+<span>/</span>
+<a class="hover:text-purple-400" href="index.html">Track 3</a>
+<span>/</span>
+<span class="text-purple-400">Module 3.2</span>
+</div>
+</nav>
+<main id="conteudo">
+<!-- HEADER DO MÓDULO -->
+<header class="bg-gradient-to-br from-purple-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">MODULE 3.2</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🧩 Interview, Generate Your Skill, and Make Your First Reel</h1>
+<p class="text-lg text-neutral-400 max-w-3xl inema-prose">With the stack ready, this is where the magic happens: the <strong class="text-neutral-200">8-block interview</strong> designs your identity, the engine is copied, and out comes your <strong class="text-neutral-200">child skill</strong>. At the end, one command runs your first reel—and you learn how it <em>degrades gracefully</em> if any extra is missing.</p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">6</div><div class="text-xs text-neutral-400">Topics</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">~35min</div><div class="text-xs text-neutral-400">Duration</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">Practical</div><div class="text-xs text-neutral-400">Level</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">Hands-on</div><div class="text-xs text-neutral-400">Type</div></div>
+</div>
+<div aria-label="Module 3.2 progress" aria-valuemax="100" aria-valuemin="0" class="inema-meter max-w-md mt-6" data-inema-meter="modulo:3-2" role="progressbar">
+<div class="flex items-center justify-between text-sm mb-1"><span class="text-neutral-400">Sections read in this module</span><span class="text-purple-400 font-semibold"><span data-inema-meter-pct="">0%</span> · <span data-inema-meter-frac="">0 of 0</span></span></div>
+<div class="inema-bar"><div class="inema-bar__fill" data-inema-meter-fill=""></div></div>
+</div>
+</div>
+</header>
+<!-- BLOCO-DESTAQUE: o uso em 2 comandos (resumo) -->
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+<div class="bg-purple-900/20 border border-purple-500/40 rounded-xl p-5 sm:p-6">
+<p class="text-lg font-bold text-purple-400 mb-1 flex items-center"><span aria-hidden="true" class="mr-2">🚀</span> How to use it in 2 commands (summary)</p>
+<p class="text-neutral-300 text-sm inema-prose mb-4">The entire editor boils down to two sentences typed into Claude Code. The rest of this module explains each one.</p>
+<div class="bg-dark-900 rounded-xl border border-dark-600 overflow-hidden mb-2">
+<div class="flex items-center justify-between px-4 py-2 border-b border-dark-600 bg-dark-800">
+<span class="text-xs font-mono text-neutral-400">you type in Claude Code</span>
+<button class="text-xs px-2 py-1 rounded bg-dark-700 hover:bg-dark-600 text-neutral-300 transition-colors" onclick="var c=this.closest('div').parentNode.querySelector('code'); if(navigator.clipboard)navigator.clipboard.writeText(c.innerText); this.textContent='Copiado';" type="button">Copy</button>
+</div>
+<pre class="p-4 overflow-x-auto text-sm"><code class="font-mono text-purple-300">forja meu editor de reels</code></pre>
+</div>
+<p class="text-xs text-neutral-400 mb-5"><strong class="text-neutral-300">once:</strong> you answer the interview, and the skill generates YOUR reel-edita-&lt;marca&gt;.</p>
+<div class="bg-dark-900 rounded-xl border border-dark-600 overflow-hidden mb-2">
+<div class="flex items-center justify-between px-4 py-2 border-b border-dark-600 bg-dark-800">
+<span class="text-xs font-mono text-neutral-400">you type in Claude Code</span>
+<button class="text-xs px-2 py-1 rounded bg-dark-700 hover:bg-dark-600 text-neutral-300 transition-colors" onclick="var c=this.closest('div').parentNode.querySelector('code'); if(navigator.clipboard)navigator.clipboard.writeText(c.innerText); this.textContent='Copiado';" type="button">Copy</button>
+</div>
+<pre class="p-4 overflow-x-auto text-sm"><code class="font-mono text-purple-300">reel edita ~/videos/gravacao-bruta.mp4</code></pre>
+</div>
+<p class="text-xs text-neutral-400"><strong class="text-neutral-300">every time:</strong> provide the path to the vertical raw footage; it cuts, suggests the treatment, assembles, and delivers.</p>
+</div>
+</div>
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="lg:grid lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-10">
+<!-- TOC -->
+<nav aria-label="Module index" class="hidden lg:block sticky top-24 self-start" data-inema-toc="">
+<p class="text-sm text-neutral-400 mb-2">Section <span class="inema-toc-pos">1</span> of <span class="inema-toc-total">6</span></p>
+<ul class="space-y-1 text-sm">
+<li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-purple-400 transition-colors" href="#topico-1">1. 8-block interview</a></li>
+<li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-purple-400 transition-colors" href="#topico-2">2. One decision at a time</a></li>
+<li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-purple-400 transition-colors" href="#topico-3">3. Opt-in diagnosis</a></li>
+<li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-purple-400 transition-colors" href="#topico-4">4. Generate the child skill</a></li>
+<li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-purple-400 transition-colors" href="#topico-5">5. Run the first reel</a></li>
+<li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-purple-400 transition-colors" href="#topico-6">6. Degrade gracefully</a></li>
+</ul>
+</nav>
+<div class="min-w-0">
+<!-- ================= TÓPICO 1 ================= -->
+<section class="mb-16" data-inema-topic="modulo-3-2#topico-1" id="topico-1">
+<div class="flex items-center justify-between gap-3 mb-6">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex-shrink-0">1</span>
+<h2 class="text-2xl font-bold">🎙️ The 8-block interview</h2>
+</div>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Flag a question about this topic" type="button"><span aria-hidden="true">?</span><span>I have a question</span></button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m3-2-t1-p1">
+              As soon as you activate Forja Reel, it starts a <strong class="text-purple-400">interview organized into 8 blocks</strong>. Each block covers one part of your editing identity. In the end, all the answers become the half that is <em>only yours</em> — the one that adds to the shared engine.
+            </p>
+<p class="text-neutral-300 mb-3 leading-relaxed inema-prose">
+<strong class="text-purple-400">What you type</strong> to get started (just once):
+            </p>
+<div class="bg-dark-900 rounded-xl border border-dark-600 overflow-hidden mb-2">
+<div class="flex items-center justify-between px-4 py-2 border-b border-dark-600 bg-dark-800">
+<span class="text-xs font-mono text-neutral-400">you type in Claude Code</span>
+<button class="text-xs px-2 py-1 rounded bg-dark-700 hover:bg-dark-600 text-neutral-300 transition-colors" onclick="var c=this.closest('div').parentNode.querySelector('code'); if(navigator.clipboard)navigator.clipboard.writeText(c.innerText); this.textContent='Copiado';" type="button">Copy</button>
+</div>
+<pre class="p-4 overflow-x-auto text-sm"><code class="font-mono text-purple-300">forja meu editor de reels</code></pre>
+</div>
+<p class="text-xs text-neutral-400 mb-6">Equivalent alternatives: <code>/forja-reel</code> or <code>monta meu reel-edita</code>. The skill responds with the first question from the 8 blocks.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 text-sm">
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-4 flex items-start gap-3"><span class="text-purple-400 font-bold">1</span><div><span class="font-semibold text-neutral-100">What you edit</span><p class="text-neutral-400">Content type and channel.</p></div></div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-4 flex items-start gap-3"><span class="text-purple-400 font-bold">2</span><div><span class="font-semibold text-neutral-100">How you appear</span><p class="text-neutral-400">Full screen, PiP, faceless…</p></div></div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-4 flex items-start gap-3"><span class="text-purple-400 font-bold">3</span><div><span class="font-semibold text-neutral-100">Visual identity</span><p class="text-neutral-400">Colors, typography, branding.</p></div></div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-4 flex items-start gap-3"><span class="text-purple-400 font-bold">4</span><div><span class="font-semibold text-neutral-100">Pacing</span><p class="text-neutral-400">Faster-paced or more relaxed.</p></div></div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-4 flex items-start gap-3"><span class="text-purple-400 font-bold">5</span><div><span class="font-semibold text-neutral-100">B-roll</span><p class="text-neutral-400">Real, generic, how much to use.</p></div></div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-4 flex items-start gap-3"><span class="text-purple-400 font-bold">6</span><div><span class="font-semibold text-neutral-100">Text</span><p class="text-neutral-400">Caption and chip style.</p></div></div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-4 flex items-start gap-3"><span class="text-purple-400 font-bold">7</span><div><span class="font-semibold text-neutral-100">Delivery</span><p class="text-neutral-400">Format, resolution, duration.</p></div></div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-4 flex items-start gap-3"><span class="text-purple-400 font-bold">8</span><div><span class="font-semibold text-neutral-100">Control</span><p class="text-neutral-400">How much you want to review.</p></div></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 text-sm">
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-4"><span class="text-purple-400 font-semibold">What it is</span><p class="text-neutral-300 mt-1">A conversation in 8 blocks that shapes your editing identity.</p></div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-4"><span class="text-purple-400 font-semibold">Why learn</span><p class="text-neutral-300 mt-1">These answers become your half of the child skill.</p></div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-4"><span class="text-purple-400 font-semibold">Key concepts</span><p class="text-neutral-300 mt-1">Interview, 8 blocks, identity.</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-400 hover:bg-purple-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- ================= TÓPICO 2 ================= -->
+<section class="mb-16" data-inema-topic="modulo-3-2#topico-2" id="topico-2">
+<div class="flex items-center justify-between gap-3 mb-6">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex-shrink-0">2</span>
+<h2 class="text-2xl font-bold">✅ One decision at a time, always with a recommendation</h2>
+</div>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Flag a question about this topic" type="button"><span aria-hidden="true">?</span><span>I have a question</span></button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m3-2-t2-p1">
+              The interview doesn’t bombard you: it asks <strong class="text-purple-400">one thing at a time</strong>, in clear language, and <strong class="text-purple-400">always suggests a recommendation</strong>. You can accept the default, adjust it, or ask for an explanation. At the end, everything is consolidated into a file — the <code>perfil.json</code>.
+            </p>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-5 mb-6">
+<p class="text-sm font-semibold text-blue-400 mb-1">New here? — “perfil.json”</p>
+<p class="text-neutral-300 text-sm inema-prose" data-inema-block="m3-2-t2-p2">It’s a small text file that neatly stores all your interview choices. It is the <strong>source of your identity</strong>: you can save, version, and reuse it when generating the skill.</p>
+</div>
+<div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-purple-400 mb-2 flex items-center"><span class="mr-2">💬</span> What a question looks like in practice</h3>
+<p class="text-neutral-300 text-sm inema-prose">"Do you prefer a more <strong>agile</strong> (quick cuts, lots of movement) or more <strong>with breathing room</strong> (longer shots, breathing room between ideas)? <em>I recommend agile for short social media content.</em>" — you can simply respond quickly/with breathing room, or accept the suggestion.</p>
+</div>
+<p class="text-neutral-300 text-sm inema-prose mb-2"><span class="text-purple-400 font-semibold">Why learn:</span> you make decisions without getting lost, even if you don’t know the jargon. <span class="text-purple-400 font-semibold">Key concepts:</span> guided decision, recommendation, perfil.json.</p>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-400 hover:bg-purple-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- ================= TÓPICO 3 ================= -->
+<section class="mb-16" data-inema-topic="modulo-3-2#topico-3" id="topico-3">
+<div class="flex items-center justify-between gap-3 mb-6">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex-shrink-0">3</span>
+<h2 class="text-2xl font-bold">🩺 Environment Diagnostics (Opt-In)</h2>
+</div>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Flag a question about this topic" type="button"><span aria-hidden="true">?</span><span>I have a question</span></button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m3-2-t3-p1">
+              Knowing your profile, the skill creates a <strong class="text-purple-400">environment diagnostics</strong>: checks what’s already on your machine and proposes installing it <strong>only what your profile needs</strong>. Nothing unnecessarily heavy, and <strong class="text-purple-400">nothing paid without your "yes"</strong>.
+            </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ What it does</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Check FFmpeg, Hyperframes, Groq</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Suggests only what's missing for your profile</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Asks for confirmation before anything paid</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ What it avoids</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Install extras you won’t use</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Connect a paid service on your own</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Leave you in the dark about what changed</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-5 mb-6">
+<p class="text-sm text-neutral-300 inema-prose" data-inema-block="m3-2-t3-p2"><span class="text-primary font-semibold">💡 Why “opt-in” matters:</span> you stay in control. You can start with just the essentials (FFmpeg + Hyperframes) and add the extras later when it makes sense. <span class="text-purple-400 font-semibold">Key concepts:</span> diagnostics, opt-in, minimal dependencies.</p>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-400 hover:bg-purple-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- ================= TÓPICO 4 ================= -->
+<section class="mb-16" data-inema-topic="modulo-3-2#topico-4" id="topico-4">
+<div class="flex items-center justify-between gap-3 mb-6">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex-shrink-0">4</span>
+<h2 class="text-2xl font-bold">🧬 Generate the Child Skill reel-edita-&lt;marca&gt;</h2>
+</div>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Flag a question about this topic" type="button"><span aria-hidden="true">?</span><span>I have a question</span></button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m3-2-t4-p1">
+              This is the moment when the meta-skill fulfills its role: it <strong class="text-purple-400">copies the engine</strong> (the technical part, tested and shared) and <strong class="text-purple-400">combines your generated identity</strong> (of the <code>perfil.json</code>). The result is a new skill, just for you: <code>reel-edita-&lt;marca&gt;</code> — o <em>your</em> editor.
+            </p>
+<!-- SVG: perfil + motor = skill -->
+<figure class="rounded-2xl border border-purple-500/30 bg-dark-900/40 p-3 sm:p-4 mb-6 overflow-hidden">
+<svg aria-label="Your identity (profile dot json) combined with the shared engine creates your child skill, the reel-edita-marca editor" class="w-full h-auto" role="img" viewbox="0 0 900 200">
+<defs>
+<lineargradient id="m32-grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#a78bfa"></stop><stop offset="1" stop-color="#8b5cf6"></stop></lineargradient>
+<filter height="180%" id="m32-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="30" id="m32-grid" patternunits="userSpaceOnUse" width="30"><circle cx="1.3" cy="1.3" fill="#8b5cf6" opacity="0.12" r="1.3"></circle></pattern>
+</defs>
+<rect fill="url(#m32-grid)" height="200" width="900" x="0" y="0"></rect>
+<!-- perfil.json (identidade, ciano) -->
+<rect fill="#0e1b26" height="72" rx="13" stroke="#38bdf8" stroke-width="2" width="196" x="24" y="64"></rect>
+<text fill="#bfe6ff" font-family="Inter,sans-serif" font-size="16" font-weight="700" text-anchor="middle" x="122" y="96">perfil.json</text>
+<text fill="#7dd3fc" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" x="122" y="116">your identity</text>
+<!-- + -->
+<text fill="#c4b5fd" font-family="Inter,sans-serif" font-size="30" font-weight="700" text-anchor="middle" x="252" y="110">+</text>
+<!-- motor (roxo) -->
+<g filter="url(#m32-glow)"><rect fill="#170e2b" height="84" rx="14" stroke="url(#m32-grad)" stroke-width="2.5" width="180" x="284" y="58"></rect></g>
+<text fill="#a78bfa" font-family="Inter,sans-serif" font-size="18" font-weight="700" text-anchor="middle" x="374" y="94">ENGINE</text>
+<text fill="#c4b5fd" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" x="374" y="114">shared</text>
+<!-- = -->
+<text fill="#c4b5fd" font-family="Inter,sans-serif" font-size="30" font-weight="700" text-anchor="middle" x="500" y="110">=</text>
+<!-- skill-filha (roxo glow) -->
+<g filter="url(#m32-glow)"><rect fill="#2a1a52" height="92" rx="16" stroke="url(#m32-grad)" stroke-width="2.5" width="336" x="536" y="54"></rect></g>
+<text fill="#ddd6fe" font-family="Inter,sans-serif" font-size="18" font-weight="700" text-anchor="middle" x="704" y="94">reel-edita-&lt;marca&gt;</text>
+<text fill="#c4b5fd" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" x="704" y="116">your editor (child skill)</text>
+</svg>
+<figcaption class="text-xs text-neutral-400 mt-2 text-center">The meta-skill equation: your identity (blue, from the <code>perfil.json</code>) plus the shared engine (purple) generate the child skill on the right. Change the profile and you get a different editor — the engine is the same.</figcaption>
+</figure>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-5 mb-6">
+<p class="text-sm font-semibold text-blue-400 mb-1">Important detail — normalization</p>
+<p class="text-neutral-300 text-sm inema-prose" data-inema-block="m3-2-t4-p2">The child skill comes out clean and technical: it carries your name/brand, with no traces of any third-party origin. It’s <em>your</em> tool, presented as technical.</p>
+</div>
+<p class="text-neutral-300 text-sm inema-prose mb-2"><span class="text-purple-400 font-semibold">Key concepts:</span> child skill, engine + identity, generation.</p>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-400 hover:bg-purple-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- ================= TÓPICO 5 ================= -->
+<section class="mb-16" data-inema-topic="modulo-3-2#topico-5" id="topico-5">
+<div class="flex items-center justify-between gap-3 mb-6">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex-shrink-0">5</span>
+<h2 class="text-2xl font-bold">🎬 Run Your First Reel</h2>
+</div>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Flag a question about this topic" type="button"><span aria-hidden="true">?</span><span>I have a question</span></button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m3-2-t5-p1">
+              With the child skill ready, editing takes one sentence. You call <code>reel edita</code> followed by the path to your raw video, and the engine does the rest—deterministic cutting, assembly, captions, SFX, and review in a loop until it passes.
+            </p>
+<p class="text-neutral-300 mb-3 leading-relaxed inema-prose">
+<strong class="text-purple-400">Objective:</strong> make your first reel from an MP4. Replace the section between <code>&lt; &gt;</code> using your file’s actual path.
+            </p>
+<div class="bg-dark-900 rounded-xl border border-dark-600 overflow-hidden mb-3">
+<div class="flex items-center justify-between px-4 py-2 border-b border-dark-600 bg-dark-800">
+<span class="text-xs font-mono text-neutral-400">child skill (in Claude) · message</span>
+<button class="text-xs px-2 py-1 rounded bg-dark-700 hover:bg-dark-600 text-neutral-300 transition-colors" onclick="var c=this.closest('div').parentNode.querySelector('code'); if(navigator.clipboard)navigator.clipboard.writeText(c.innerText); this.textContent='Copiado';" type="button">Copy</button>
+</div>
+<pre class="p-4 overflow-x-auto text-sm"><code class="font-mono text-purple-300">reel edita &lt;caminho-do-seu-video.mp4&gt;</code></pre>
+</div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-4 mb-3 text-sm">
+<p class="text-neutral-400 mb-2">Example using a real path:</p>
+<div class="bg-dark-900 rounded-lg border border-dark-600 overflow-hidden">
+<pre class="p-3 overflow-x-auto text-sm"><code class="font-mono text-purple-300">reel edita ~/videos/gravacao-bruta.mp4</code></pre>
+</div>
+</div>
+<div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-4 mb-6">
+<p class="text-sm font-semibold text-emerald-400 mb-1">How to verify</p>
+<p class="text-neutral-300 text-sm inema-prose">It answers <strong>showing the clean cut</strong> for you to approve and <strong>suggesting 2-3 treatments</strong>; then builds it, runs the reviewer in a loop until it passes, and points out the <strong>generated reel file</strong> (a vertical MP4). Open it and check: clean speech, pacing without gaps, captions at the right height.</p>
+</div>
+<p class="text-neutral-300 text-sm inema-prose mb-2"><span class="text-purple-400 font-semibold">Key concepts:</span> reel edits, file path, first render.</p>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-400 hover:bg-purple-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- ================= TÓPICO 6 ================= -->
+<section class="mb-16" data-inema-topic="modulo-3-2#topico-6" id="topico-6">
+<div class="flex items-center justify-between gap-3 mb-6">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl flex-shrink-0">6</span>
+<h2 class="text-2xl font-bold">🛟 Fail Gracefully</h2>
+</div>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Flag a question about this topic" type="button"><span aria-hidden="true">?</span><span>I have a question</span></button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m3-2-t6-p1">
+              Not everyone will turn on all the extras—and that’s fine. An important quality of the skill is <strong class="text-purple-400">degrade gracefully</strong>: if an optional item is missing, it doesn’t block the process; it chooses a backup plan and delivers anyway.
+            </p>
+<div class="space-y-4 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold">🖼️</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-1">Without fal.ai</h4>
+<p class="text-neutral-300 text-sm inema-prose">The cold open comes out <strong>without an AI-generated image</strong> — uses a simpler visual element, but still makes an impact.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold">🌐</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-1">Without Firecrawl</h4>
+<p class="text-neutral-300 text-sm inema-prose">Without real website captures, it uses another supporting element for the B-roll instead of leaving a gap.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center"><span class="text-purple-400 font-bold">🧠</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-5 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-1">Without Groq</h4>
+<p class="text-neutral-300 text-sm inema-prose">Transcription/review falls back to another option; caption quality may vary a little, but the reel gets made.</p>
+</div>
+</div>
+</div>
+<div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-purple-400 mb-2 flex items-center"><span class="mr-2">🔑</span> The rule</h3>
+<p class="text-neutral-300 inema-prose">Start with the essentials (FFmpeg + Hyperframes) and add the extras whenever you want. You never get stuck waiting until you have “everything”—you can always generate something.</p>
+</div>
+<p class="text-neutral-300 text-sm inema-prose mb-2"><span class="text-purple-400 font-semibold">Key concepts:</span> graceful degradation, fallback, essentials first.</p>
+<!-- Checagem leve opcional -->
+<div class="inema-check mt-8 bg-dark-800 border border-dark-600 rounded-xl p-6" data-inema-check="modulo-3-2#q1">
+<p class="font-medium mb-4">Self-recovery (optional): what generates your child skill <code>reel-edita-&lt;marca&gt;</code>?</p>
+<div class="inema-check-options space-y-2">
+<button class="block w-full text-left px-4 py-2 rounded-lg bg-dark-700 border border-dark-600 hover:bg-dark-600 transition-colors text-sm" data-inema-check-option="0" type="button">Only the shared engine, the same for everyone.</button>
+<button class="block w-full text-left px-4 py-2 rounded-lg bg-dark-700 border border-dark-600 hover:bg-dark-600 transition-colors text-sm" data-inema-check-option="1" type="button">Your identity (perfil.json) combined with the shared engine.</button>
+<button class="block w-full text-left px-4 py-2 rounded-lg bg-dark-700 border border-dark-600 hover:bg-dark-600 transition-colors text-sm" data-inema-check-option="2" type="button">Only the paid services (fal.ai and Firecrawl).</button>
+</div>
+<div aria-live="polite" class="mt-4 text-sm" data-inema-check-feedback="" role="status"></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-400 hover:bg-purple-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span>
+</button>
+</div>
+</section>
+<!-- RESUMO DO MÓDULO -->
+<section class="mb-4">
+<div class="bg-gradient-to-br from-purple-900/40 via-dark-800 to-dark-800 rounded-xl border border-purple-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✅</span> Module summary</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">8-block interview</strong><span class="text-neutral-400"> — shapes your identity, one decision at a time, always with a recommendation.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">perfil.json + opt-in diagnosis</strong><span class="text-neutral-400"> — your choices become a file; it installs only what’s needed, nothing paid without a “yes.”</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">Generated child skill</strong><span class="text-neutral-400"> — engine + identity = reel-edita-&lt;marca&gt;, your editor, neutralized.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">First reel and fallback</strong><span class="text-neutral-400"> — “edit reel &lt;mp4&gt;” runs everything; without an extra, it degrades gracefully.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-purple-400 mb-2">Next track:</h3>
+<p class="text-neutral-300">Track 4 — Practical examples: the 6 recipes, the cold open, and a real end-to-end workflow with QC.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="index.html">← Back to Track 3</a>
+<a class="flex-1 text-center px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-500 transition-colors" href="../trilha4/index.html">Track 4: Practical examples →</a>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+<footer class="border-t border-dark-600 py-8 mt-8">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>videos-edit Forja Reel — Course · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a></p></div>
+</footer>
+<script>
+    (function(){
+      var themeToggle=document.getElementById('theme-toggle'), darkIcon=document.getElementById('theme-toggle-dark-icon'), lightIcon=document.getElementById('theme-toggle-light-icon'), html=document.documentElement;
+      if (html.classList.contains('dark')) lightIcon.classList.remove('hidden'); else darkIcon.classList.remove('hidden');
+      if (themeToggle) themeToggle.addEventListener('click', function(){ darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden'); html.classList.toggle('dark'); var isDark=html.classList.contains('dark'); localStorage.setItem('theme', isDark?'dark':'light'); try{var p=JSON.parse(localStorage.getItem('inema.prefs')||'{}'); p.theme=isDark?'inema-dark':'claro'; localStorage.setItem('inema.prefs', JSON.stringify(p));}catch(e){} html.style.colorScheme=isDark?'dark':'light'; });
+    })();
+  </script>
+<script src="../../../assets/learn.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+      if (window.INEMA && typeof window.INEMA.init === 'function') { window.INEMA.init(); }
+      if (window.INEMA && INEMA.registerCheck) {
+        INEMA.registerCheck('modulo-3-2#q1', {
+          answer: 1,
+          explain: {
+            0: 'Só o motor não basta — sem a sua identidade sairia igual para todo mundo.',
+            1: 'Isso — perfil.json (identidade) + motor (compartilhado) = a sua skill-filha.',
+            2: 'Os serviços pagos são opcionais; não são o que define a skill-filha.'
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

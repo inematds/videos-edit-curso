@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="pt-BR">
+<html class="dark" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="forja-reel" name="inema-course"/>
-<title>Módulo 2.2 · Comportas, scripts e determinismo | videos-edit Forja Reel</title>
+<title>Module 2.2 · Gates, Scripts, and Determinism | videos-edit Forja Reel</title>
 <script>
   (function () {
     try {
@@ -44,7 +44,7 @@
     tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } } }
   </script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="../../assets/learn.css" rel="stylesheet"/>
+<link href="../../../assets/learn.css" rel="stylesheet"/>
 <script data-inema-manifest="" type="application/json">
   {
     "course": "forja-reel",
@@ -131,8 +131,8 @@
     .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
   </style>
 <link href="https://inematds.github.io/videos-edit-curso/curso/trilha2/modulo-2-2.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/videos-edit-curso/en/curso/trilha2/modulo-2-2.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/videos-edit-curso/es/curso/trilha2/modulo-2-2.html" hreflang="es" rel="alternate"/></head>
-<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="modulo-2-2.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">PT</a><a href="../../en/curso/trilha2/modulo-2-2.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="../../es/curso/trilha2/modulo-2-2.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
-<a class="skip sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-2 focus:left-2 focus:px-4 focus:py-2 focus:bg-dark-800 focus:rounded-lg" href="#conteudo">Pular para o conteúdo</a>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha2/modulo-2-2.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="modulo-2-2.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">EN</a><a href="../../../es/curso/trilha2/modulo-2-2.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<a class="skip sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-2 focus:left-2 focus:px-4 focus:py-2 focus:bg-dark-800 focus:rounded-lg" href="#conteudo">Skip to content</a>
 <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex justify-between items-center h-14 gap-2">
@@ -147,12 +147,12 @@
 <a class="text-amber-700 hover:text-amber-600 dark:text-slate-300 dark:hover:text-slate-200 text-sm font-medium" href="https://inema.pro" target="_blank">PRO</a>
 </div>
 <div class="flex items-center space-x-1 sm:space-x-2">
-<a class="px-2.5 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamento</span></a>
-<a class="px-2.5 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10" href="index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">A skill</span></a>
-<a class="px-2.5 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Como usar</span></a>
-<a class="px-2.5 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Exemplos</span></a>
-<button class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-neutral-300 hover:text-neutral-100 hover:bg-dark-700 transition-colors text-sm" data-inema-journey-open="" type="button"><span aria-hidden="true">◷</span><span class="hidden lg:inline">Jornada</span><span class="inema-journey-badge hidden" data-count="0" data-inema-journey-badge=""></span></button>
-<button aria-expanded="false" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-neutral-300 hover:text-neutral-100 hover:bg-dark-700 transition-colors text-sm" data-inema-appearance-toggle="[data-inema-appearance]" type="button"><span aria-hidden="true">◑</span><span class="hidden lg:inline">Aparência</span></button>
+<a class="px-2.5 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Foundation</span></a>
+<a class="px-2.5 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10" href="index.html"><span class="sm:hidden">T2</span><span class="hidden sm:inline">The skill</span></a>
+<a class="px-2.5 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors" href="../trilha3/index.html"><span class="sm:hidden">T3</span><span class="hidden sm:inline">How to use</span></a>
+<a class="px-2.5 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors" href="../trilha4/index.html"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Examples</span></a>
+<button class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-neutral-300 hover:text-neutral-100 hover:bg-dark-700 transition-colors text-sm" data-inema-journey-open="" type="button"><span aria-hidden="true">◷</span><span class="hidden lg:inline">Journey</span><span class="inema-journey-badge hidden" data-count="0" data-inema-journey-badge=""></span></button>
+<button aria-expanded="false" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-neutral-300 hover:text-neutral-100 hover:bg-dark-700 transition-colors text-sm" data-inema-appearance-toggle="[data-inema-appearance]" type="button"><span aria-hidden="true">◑</span><span class="hidden lg:inline">Appearance</span></button>
 <button class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors" id="theme-toggle">
 <svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
 <svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
@@ -161,39 +161,39 @@
 </div>
 </div>
 <div class="inema-appearance-pop" data-inema-appearance="">
-<div aria-label="Tema" class="inema-segment" role="group"><button data-inema-set-theme="inema-dark">Escuro</button><button data-inema-set-theme="claro">Claro</button><button data-inema-set-theme="sepia">Sépia</button><button data-inema-set-theme="foco">Foco</button><button data-inema-set-theme="contraste">Alto contraste</button></div>
-<div aria-label="Fonte" class="inema-segment" role="group"><button data-inema-set-font="inter">Inter</button><button data-inema-set-font="system">Sistema</button><button data-inema-set-font="leitura">Leitura</button></div>
-<div aria-label="Tamanho" class="inema-segment" role="group"><button data-inema-set-fontscale="100">A</button><button data-inema-set-fontscale="112">A+</button><button data-inema-set-fontscale="125">A++</button></div>
-<div aria-label="Largura" class="inema-segment" role="group"><button data-inema-set-linewidth="60">Estreito</button><button data-inema-set-linewidth="68">Médio</button><button data-inema-set-linewidth="75">Largo</button></div>
-<div aria-label="Entrelinha" class="inema-segment" role="group"><button data-inema-set-leading="1.45">Compacto</button><button data-inema-set-leading="1.7">Confortável</button></div>
-<div aria-label="Cor de acento" class="inema-accent-grid" role="group"><button data-inema-set-accent="emerald" title="Verde"></button><button data-inema-set-accent="blue" title="Azul"></button><button data-inema-set-accent="purple" title="Roxo"></button><button data-inema-set-accent="amber" title="Âmbar"></button><button data-inema-set-accent="teal" title="Teal"></button><button data-inema-set-accent="rose" title="Rosa"></button></div>
+<div aria-label="Theme" class="inema-segment" role="group"><button data-inema-set-theme="inema-dark">Dark</button><button data-inema-set-theme="claro">Clear</button><button data-inema-set-theme="sepia">Sepia</button><button data-inema-set-theme="foco">Focus</button><button data-inema-set-theme="contraste">High contrast</button></div>
+<div aria-label="Source" class="inema-segment" role="group"><button data-inema-set-font="inter">Inter</button><button data-inema-set-font="system">System</button><button data-inema-set-font="leitura">Reading</button></div>
+<div aria-label="Size" class="inema-segment" role="group"><button data-inema-set-fontscale="100">A</button><button data-inema-set-fontscale="112">A+</button><button data-inema-set-fontscale="125">A++</button></div>
+<div aria-label="Width" class="inema-segment" role="group"><button data-inema-set-linewidth="60">Narrow</button><button data-inema-set-linewidth="68">Intermediate</button><button data-inema-set-linewidth="75">Wide</button></div>
+<div aria-label="Line spacing" class="inema-segment" role="group"><button data-inema-set-leading="1.45">Compact</button><button data-inema-set-leading="1.7">Comfortable</button></div>
+<div aria-label="Accent color" class="inema-accent-grid" role="group"><button data-inema-set-accent="emerald" title="Green"></button><button data-inema-set-accent="blue" title="Blue"></button><button data-inema-set-accent="purple" title="Purple"></button><button data-inema-set-accent="amber" title="Amber"></button><button data-inema-set-accent="teal" title="Teal"></button><button data-inema-set-accent="rose" title="Pink"></button></div>
 </div>
 </nav>
 <!-- BREADCRUMB -->
-<nav aria-label="Trilha de navegação" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<nav aria-label="Navigation track" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
 <div class="flex items-center space-x-2 text-sm text-neutral-400">
-<a class="hover:text-blue-400" href="../../index.html">Início</a>
+<a class="hover:text-blue-400" href="../../index.html">Start</a>
 <span>/</span>
-<a class="hover:text-blue-400" href="index.html">Trilha 2</a>
+<a class="hover:text-blue-400" href="index.html">Track 2</a>
 <span>/</span>
-<span class="text-blue-400">Módulo 2.2</span>
+<span class="text-blue-400">Module 2.2</span>
 </div>
 </nav>
 <main id="conteudo">
 <!-- HEADER DO MÓDULO -->
 <header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-<span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MÓDULO 2.2</span>
-<h1 class="text-3xl sm:text-4xl font-bold mb-4">🔧 Comportas, scripts e determinismo</h1>
-<p class="text-lg text-neutral-400 max-w-3xl inema-prose">Agora os comandos reais por trás de cada fase. Você vai ver os <strong class="text-neutral-200">scripts do motor</strong> — <code class="text-blue-400">islands.py</code>, <code class="text-blue-400">cut.py</code>, <code class="text-blue-400">verify-cut.py</code>, <code class="text-blue-400">lint-timeline.py</code>, <code class="text-blue-400">captions.py</code>, <code class="text-blue-400">make-sfx.sh</code> e <code class="text-blue-400">mix-sfx.py</code> — e a regra de <strong class="text-neutral-200">determinismo</strong> que faz tudo isso ser confiável. Cada bloco é colável e vem com como verificar.</p>
+<span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MODULE 2.2</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🔧 Gates, Scripts, and Determinism</h1>
+<p class="text-lg text-neutral-400 max-w-3xl inema-prose">Now for the actual commands behind each phase. You’ll see the <strong class="text-neutral-200">engine scripts</strong> — <code class="text-blue-400">islands.py</code>, <code class="text-blue-400">cut.py</code>, <code class="text-blue-400">verify-cut.py</code>, <code class="text-blue-400">lint-timeline.py</code>, <code class="text-blue-400">captions.py</code>, <code class="text-blue-400">make-sfx.sh</code> e <code class="text-blue-400">mix-sfx.py</code> — and the rule of <strong class="text-neutral-200">determinism</strong> that makes all of this reliable. Every block is ready to paste and includes instructions on how to verify it.</p>
 <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
-<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">6</div><div class="text-xs text-neutral-400">Tópicos</div></div>
-<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">~35min</div><div class="text-xs text-neutral-400">Duração</div></div>
-<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">Intermediário</div><div class="text-xs text-neutral-400">Nível</div></div>
-<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">Prática</div><div class="text-xs text-neutral-400">Tipo</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">6</div><div class="text-xs text-neutral-400">Topics</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">~35min</div><div class="text-xs text-neutral-400">Duration</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">Intermediate</div><div class="text-xs text-neutral-400">Level</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">Practice</div><div class="text-xs text-neutral-400">Type</div></div>
 </div>
-<div aria-label="Progresso do módulo 2.2" aria-valuemax="100" aria-valuemin="0" class="inema-meter max-w-md mt-6" data-inema-meter="modulo:2-2" role="progressbar">
-<div class="flex items-center justify-between text-sm mb-1"><span class="text-neutral-400">Seções lidas neste módulo</span><span class="text-blue-400 font-semibold"><span data-inema-meter-pct="">0%</span> · <span data-inema-meter-frac="">0 de 0</span></span></div>
+<div aria-label="Module 2.2 progress" aria-valuemax="100" aria-valuemin="0" class="inema-meter max-w-md mt-6" data-inema-meter="modulo:2-2" role="progressbar">
+<div class="flex items-center justify-between text-sm mb-1"><span class="text-neutral-400">Sections read in this module</span><span class="text-blue-400 font-semibold"><span data-inema-meter-pct="">0%</span> · <span data-inema-meter-frac="">0 of 0</span></span></div>
 <div class="inema-bar"><div class="inema-bar__fill" data-inema-meter-fill=""></div></div>
 </div>
 </div>
@@ -201,15 +201,15 @@
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 <div class="lg:grid lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-10">
 <!-- TOC -->
-<nav aria-label="Índice do módulo" class="hidden lg:block sticky top-24 self-start" data-inema-toc="">
-<p class="text-sm text-neutral-400 mb-2">Seção <span class="inema-toc-pos">1</span> de <span class="inema-toc-total">6</span></p>
+<nav aria-label="Module index" class="hidden lg:block sticky top-24 self-start" data-inema-toc="">
+<p class="text-sm text-neutral-400 mb-2">Section <span class="inema-toc-pos">1</span> of <span class="inema-toc-total">6</span></p>
 <ul class="space-y-1 text-sm">
 <li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-blue-400 transition-colors" href="#topico-1">1. silencedetect vs Whisper</a></li>
 <li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-blue-400 transition-colors" href="#topico-2">2. islands → cut → verify</a></li>
 <li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-blue-400 transition-colors" href="#topico-3">3. lint-timeline: gap &gt; 4s</a></li>
 <li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-blue-400 transition-colors" href="#topico-4">4. captions.py</a></li>
 <li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-blue-400 transition-colors" href="#topico-5">5. SFX: make + mix</a></li>
-<li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-blue-400 transition-colors" href="#topico-6">6. Determinismo Hyperframes</a></li>
+<li><a class="inema-toc-link block py-1 text-neutral-400 hover:text-blue-400 transition-colors" href="#topico-6">6. Hyperframes determinism</a></li>
 </ul>
 </nav>
 <div class="min-w-0">
@@ -218,21 +218,21 @@
 <div class="flex items-center justify-between gap-3 mb-6">
 <div class="flex items-center space-x-4">
 <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex-shrink-0">1</span>
-<h2 class="text-2xl font-bold">🎚️ silencedetect, não timestamps de Whisper</h2>
+<h2 class="text-2xl font-bold">🎚️ silencedetect, not Whisper timestamps</h2>
 </div>
-<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Marcar dúvida neste tópico" type="button"><span aria-hidden="true">?</span><span>Tenho dúvida</span></button>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Flag a question about this topic" type="button"><span aria-hidden="true">?</span><span>I have a question</span></button>
 </div>
 <p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m2-2-t1-p1">
-              O corte não confia nos tempos que o Whisper devolve — eles têm um <strong class="text-blue-400">jitter</strong> de ±0,2–0,3s, o que deixa restos de silêncio e meias-palavras. Em vez disso, o motor mede o silêncio real do áudio com o <code class="text-blue-400">silencedetect</code> do ffmpeg. O script <code class="text-blue-400">islands.py</code> usa essa energia para achar as ilhotas de voz e propor quais manter, ficando com a última tomada de cada frase.
+              The cut doesn’t trust the timestamps Whisper returns—they have a <strong class="text-blue-400">jitter</strong> of ±0.2–0.3s, which leaves bits of silence and half-words. Instead, the engine measures the actual silence in the audio with the <code class="text-blue-400">silencedetect</code> from ffmpeg. The script <code class="text-blue-400">islands.py</code> use that energy to find the voice snippets and suggest which ones to keep, using the last take of each sentence.
             </p>
 <div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-5 mb-6">
-<p class="text-sm font-semibold text-blue-400 mb-1">Objetivo</p>
-<p class="text-neutral-300 text-sm inema-prose" data-inema-block="m2-2-t1-p2">Detectar as ilhotas de voz do bruto por energia de áudio e gerar um <code>islands.json</code> com a proposta de KEEP/DROP — a base do corte, sem depender dos timestamps imprecisos da transcrição.</p>
+<p class="text-sm font-semibold text-blue-400 mb-1">Objective</p>
+<p class="text-neutral-300 text-sm inema-prose" data-inema-block="m2-2-t1-p2">Detect voice segments in the raw footage using audio energy and generate a <code>islands.json</code> with the KEEP/DROP proposal — the foundation for the edit, without relying on the transcript’s imprecise timestamps.</p>
 </div>
 <div class="bg-dark-900 rounded-xl border border-dark-600 overflow-hidden mb-6">
 <div class="flex items-center justify-between px-4 py-2 border-b border-dark-600 bg-dark-800">
 <span class="text-xs font-mono text-neutral-400">terminal</span>
-<button class="text-xs px-2 py-1 rounded bg-dark-700 hover:bg-dark-600 text-neutral-300 transition-colors" onclick="var c=this.closest('div').parentNode.querySelector('code'); if(navigator.clipboard)navigator.clipboard.writeText(c.innerText); this.textContent='Copiado';" type="button">Copiar</button>
+<button class="text-xs px-2 py-1 rounded bg-dark-700 hover:bg-dark-600 text-neutral-300 transition-colors" onclick="var c=this.closest('div').parentNode.querySelector('code'); if(navigator.clipboard)navigator.clipboard.writeText(c.innerText); this.textContent='Copiado';" type="button">Copy</button>
 </div>
 <pre class="p-4 overflow-x-auto text-sm"><code class="font-mono text-blue-300">python3 islands.py \
   --media <seu-bruto.mp4> \
@@ -241,13 +241,13 @@
   --out islands.json</seu-bruto.mp4></code></pre>
 </div>
 <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-5 mb-6">
-<p class="text-sm font-semibold text-emerald-400 mb-1">Como verificar</p>
-<p class="text-neutral-300 text-sm inema-prose">O script imprime uma tabela legível: cada ilhota com seu tempo, o texto, e o KEEP/DROP proposto com o motivo. Leia a tabela; se alguma tomada dobrada ou tangente escapou da heurística, corrija o campo <code>"keep"</code> no <code>islands.json</code> antes de seguir para o <code>cut.py</code>.</p>
+<p class="text-sm font-semibold text-emerald-400 mb-1">How to verify</p>
+<p class="text-neutral-300 text-sm inema-prose">The script prints a readable table: each island with its timing, text, and proposed KEEP/DROP with the reason. Read the table; if a repeated shot or tangent slipped past the heuristic, correct the field <code>"keep"</code> in the <code>islands.json</code> before moving on to the <code>cut.py</code>.</p>
 </div>
-<p class="text-neutral-300 text-sm inema-prose mb-2"><span class="text-blue-400 font-semibold">Conceitos-chave:</span> silencedetect, jitter, ilhota de voz, KEEP/DROP.</p>
+<p class="text-neutral-300 text-sm inema-prose mb-2"><span class="text-blue-400 font-semibold">Key concepts:</span> silencedetect, jitter, voice island, KEEP/DROP.</p>
 <div class="flex justify-start mt-6">
 <button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
-<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Marcar como lido</span>
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span>
 </button>
 </div>
 </section>
@@ -258,14 +258,14 @@
 <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex-shrink-0">2</span>
 <h2 class="text-2xl font-bold">✂️ islands.py → cut.py → verify-cut.py</h2>
 </div>
-<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Marcar dúvida neste tópico" type="button"><span aria-hidden="true">?</span><span>Tenho dúvida</span></button>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Flag a question about this topic" type="button"><span aria-hidden="true">?</span><span>I have a question</span></button>
 </div>
 <p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m2-2-t2-p1">
-              O corte é uma cadeia de três scripts com uma <strong class="text-blue-400">comporta dura</strong> no fim. <code class="text-blue-400">islands.py</code> propõe o que manter; <code class="text-blue-400">cut.py</code> cola as ilhotas com <code>keep=true</code> num único arquivo; e <code class="text-blue-400">verify-cut.py</code> confere que o resultado está limpo — sem silêncios longos no corpo nem repetições. Ele sai com <strong class="text-blue-400">exit 0</strong> quando passa e <strong class="text-blue-400">exit 1</strong> quando falha. Você não anima nada antes desse PASS.
+              The cut is a chain of three scripts with a <strong class="text-blue-400">hard gate</strong> at the end. <code class="text-blue-400">islands.py</code> suggests what to keep; <code class="text-blue-400">cut.py</code> bridges the islands with <code>keep=true</code> in a single file; and <code class="text-blue-400">verify-cut.py</code> checks that the result is clean — no long silences in the body or repetitions. It comes out with <strong class="text-blue-400">exit 0</strong> when it passes and <strong class="text-blue-400">exit 1</strong> when it fails. You don’t animate anything before this PASS.
             </p>
 <!-- SVG: fluxo islands -> cut -> verify -->
 <figure class="rounded-2xl border border-blue-500/30 bg-dark-900/40 p-3 sm:p-4 mb-6 overflow-hidden">
-<svg aria-label="islands ponto py gera islands ponto json, que alimenta cut ponto py e produz o corte, verificado por verify-cut ponto py que só libera com exit zero" class="w-full h-auto" role="img" viewbox="0 0 900 190">
+<svg aria-label="islands dot py generates islands dot json, which feeds cut dot py and produces the cut, checked by verify-cut dot py, which only passes it with exit zero" class="w-full h-auto" role="img" viewbox="0 0 900 190">
 <defs>
 <lineargradient id="m22-grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#60a5fa"></stop><stop offset="1" stop-color="#3b82f6"></stop></lineargradient>
 <filter height="180%" id="m22-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.6"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
@@ -279,24 +279,24 @@
 <text fill="#bfdbfe" font-size="10" x="114" y="110">→ islands.json</text>
 <g filter="url(#m22-glow)"><rect fill="#0e1b2e" height="60" rx="12" stroke="url(#m22-grad)" stroke-width="2.4" width="180" x="360" y="66"></rect></g>
 <text fill="#dbeafe" font-size="13" font-weight="700" x="450" y="92">cut.py</text>
-<text fill="#bfdbfe" font-size="10" x="450" y="110">cola keep=true → corte</text>
+<text fill="#bfdbfe" font-size="10" x="450" y="110">glues keep=true → cut</text>
 <g filter="url(#m22-glow)"><rect fill="#0e2018" height="60" rx="12" stroke="#38bdf8" stroke-width="2.5" width="180" x="696" y="66"></rect></g>
 <text fill="#7dd3fc" font-size="13" font-weight="700" x="786" y="92">verify-cut.py</text>
-<text fill="#bae6fd" font-size="10" x="786" y="110">exit 0 = PASSA</text>
+<text fill="#bae6fd" font-size="10" x="786" y="110">exit 0 = PASS</text>
 </g>
 <g fill="none" stroke="#60a5fa" stroke-width="2.4">
 <path d="M204,96 L360,96" marker-end="url(#m22-ah)"></path>
 <path d="M540,96 L696,96" marker-end="url(#m22-ah)"></path>
 </g>
 <text fill="#93c5fd" font-family="Inter,sans-serif" font-size="10" text-anchor="middle" x="282" y="86">revise keep</text>
-<text fill="#93c5fd" font-family="Inter,sans-serif" font-size="10" text-anchor="middle" x="618" y="86">comporta dura</text>
+<text fill="#93c5fd" font-family="Inter,sans-serif" font-size="10" text-anchor="middle" x="618" y="86">hard gate</text>
 </svg>
-<figcaption class="text-xs text-neutral-400 mt-2 text-center">A cadeia do corte: cada seta passa um artefato adiante. A última caixa (ciano) é bloqueante — se o <code>verify-cut.py</code> não der exit 0, o corte não avança para as animações.</figcaption>
+<figcaption class="text-xs text-neutral-400 mt-2 text-center">The editing pipeline: each arrow passes an artifact along. The last box (cyan) is blocking — if the <code>verify-cut.py</code> if it doesn’t exit 0, the cut doesn’t move on to the animations.</figcaption>
 </figure>
 <div class="bg-dark-900 rounded-xl border border-dark-600 overflow-hidden mb-6">
 <div class="flex items-center justify-between px-4 py-2 border-b border-dark-600 bg-dark-800">
 <span class="text-xs font-mono text-neutral-400">terminal</span>
-<button class="text-xs px-2 py-1 rounded bg-dark-700 hover:bg-dark-600 text-neutral-300 transition-colors" onclick="var c=this.closest('div').parentNode.querySelector('code'); if(navigator.clipboard)navigator.clipboard.writeText(c.innerText); this.textContent='Copiado';" type="button">Copiar</button>
+<button class="text-xs px-2 py-1 rounded bg-dark-700 hover:bg-dark-600 text-neutral-300 transition-colors" onclick="var c=this.closest('div').parentNode.querySelector('code'); if(navigator.clipboard)navigator.clipboard.writeText(c.innerText); this.textContent='Copiado';" type="button">Copy</button>
 </div>
 <pre class="p-4 overflow-x-auto text-sm"><code class="font-mono text-blue-300"># 1) monta o corte a partir das ilhotas com keep=true
 python3 cut.py --islands islands.json --out edicion/corte-final.mp4
@@ -309,13 +309,13 @@ python3 verify-cut.py \
 echo "exit: $?"   # 0 = PASSA · 1 = FALHA</code></pre>
 </div>
 <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-5 mb-6">
-<p class="text-sm font-semibold text-emerald-400 mb-1">Como verificar</p>
-<p class="text-neutral-300 text-sm inema-prose">Olhe o código de saída (<code>echo "exit: $?"</code>). <code>0</code> significa corte limpo — pode animar. <code>1</code> significa que ainda há silêncio longo no corpo ou uma repetição audível: o script imprime exatamente o que falhou. Conserte os <code>keep</code> e rode a cadeia de novo até dar 0.</p>
+<p class="text-sm font-semibold text-emerald-400 mb-1">How to verify</p>
+<p class="text-neutral-300 text-sm inema-prose">Check the exit code (<code>echo "exit: $?"</code>). <code>0</code> means a clean cut — you can animate it. <code>1</code> means there’s still a long silence in the body or an audible repetition: the script prints exactly what failed. Fix the <code>keep</code> and run the pipeline again until it reaches 0.</p>
 </div>
-<p class="text-neutral-300 text-sm inema-prose mb-2"><span class="text-blue-400 font-semibold">Conceitos-chave:</span> cadeia de scripts, comporta dura, exit 0/1.</p>
+<p class="text-neutral-300 text-sm inema-prose mb-2"><span class="text-blue-400 font-semibold">Key concepts:</span> script chain, hard gate, exit 0/1.</p>
 <div class="flex justify-start mt-6">
 <button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
-<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Marcar como lido</span>
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span>
 </button>
 </div>
 </section>
@@ -324,34 +324,34 @@ echo "exit: $?"   # 0 = PASSA · 1 = FALHA</code></pre>
 <div class="flex items-center justify-between gap-3 mb-6">
 <div class="flex items-center space-x-4">
 <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex-shrink-0">3</span>
-<h2 class="text-2xl font-bold">📏 lint-timeline.py: gap &gt; 4s = erro</h2>
+<h2 class="text-2xl font-bold">📏 lint-timeline.py: gap &gt; 4s = error</h2>
 </div>
-<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Marcar dúvida neste tópico" type="button"><span aria-hidden="true">?</span><span>Tenho dúvida</span></button>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Flag a question about this topic" type="button"><span aria-hidden="true">?</span><span>I have a question</span></button>
 </div>
 <p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m2-2-t3-p1">
-              A regra de ritmo "nunca mais de 4s sem golpe visual" deixa de ser um conselho e vira <strong class="text-blue-400">verificação automática</strong>. O <code class="text-blue-400">lint-timeline.py</code> lê o <code>motion/index.html</code> do Hyperframes, mede a distância entre os beats visuais e acusa erro quando encontra um buraco maior que o <code>--max-gap</code> (4s por padrão). É uma rede de segurança do ritmo — não substitui olhar os frames, mas pega o furo óbvio antes de renderizar.
+              The pacing rule “never more than 4s without a visual hit” stops being advice and becomes <strong class="text-blue-400">automatic check</strong>. O <code class="text-blue-400">lint-timeline.py</code> reads the <code>motion/index.html</code> from Hyperframes, measures the distance between visual beats, and reports an error when it finds a gap larger than the <code>--max-gap</code> (4s by default). It’s a rhythm safety net — it doesn’t replace reviewing the frames, but it catches the obvious gap before rendering.
             </p>
 <div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-5 mb-6">
-<p class="text-sm font-semibold text-blue-400 mb-1">Objetivo</p>
-<p class="text-neutral-300 text-sm inema-prose" data-inema-block="m2-2-t3-p2">Rodar um lint estático na timeline e falhar (exit ≠ 0) se houver qualquer trecho com mais de 4s sem um beat visual — bloqueando o render de um reel com buraco de ritmo.</p>
+<p class="text-sm font-semibold text-blue-400 mb-1">Objective</p>
+<p class="text-neutral-300 text-sm inema-prose" data-inema-block="m2-2-t3-p2">Run a static lint check on the timeline and fail (exit ≠ 0) if any stretch goes more than 4s without a visual beat—blocking the render of a reel with a pacing gap.</p>
 </div>
 <div class="bg-dark-900 rounded-xl border border-dark-600 overflow-hidden mb-6">
 <div class="flex items-center justify-between px-4 py-2 border-b border-dark-600 bg-dark-800">
 <span class="text-xs font-mono text-neutral-400">terminal</span>
-<button class="text-xs px-2 py-1 rounded bg-dark-700 hover:bg-dark-600 text-neutral-300 transition-colors" onclick="var c=this.closest('div').parentNode.querySelector('code'); if(navigator.clipboard)navigator.clipboard.writeText(c.innerText); this.textContent='Copiado';" type="button">Copiar</button>
+<button class="text-xs px-2 py-1 rounded bg-dark-700 hover:bg-dark-600 text-neutral-300 transition-colors" onclick="var c=this.closest('div').parentNode.querySelector('code'); if(navigator.clipboard)navigator.clipboard.writeText(c.innerText); this.textContent='Copiado';" type="button">Copy</button>
 </div>
 <pre class="p-4 overflow-x-auto text-sm"><code class="font-mono text-blue-300"># lint do ritmo: falha se houver &gt;4s sem beat visual
 python3 lint-timeline.py motion/index.html --max-gap 4.0
 echo "exit: $?"   # 0 = ritmo ok · ≠0 = buraco de ritmo</code></pre>
 </div>
 <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-5 mb-6">
-<p class="text-sm font-semibold text-emerald-400 mb-1">Como verificar</p>
-<p class="text-neutral-300 text-sm inema-prose">Se passar, exit 0 e silêncio. Se falhar, o lint aponta a linha e o intervalo do buraco ("gap de X s a partir de Ys"). Adicione um beat (corte, zoom, chip, B-roll ou reveal) naquele ponto do <code>motion/index.html</code> e rode de novo até zerar os erros.</p>
+<p class="text-sm font-semibold text-emerald-400 mb-1">How to verify</p>
+<p class="text-neutral-300 text-sm inema-prose">If it passes, exit 0 and silence. If it fails, the lint points to the line and the gap duration ("gap from X s starting at Ys"). Add a beat (cut, zoom, chip, B-roll, or reveal) at that point in the <code>motion/index.html</code> and run it again until there are no errors.</p>
 </div>
-<p class="text-neutral-300 text-sm inema-prose mb-2"><span class="text-blue-400 font-semibold">Conceitos-chave:</span> lint estático, beat visual, --max-gap, comporta de ritmo.</p>
+<p class="text-neutral-300 text-sm inema-prose mb-2"><span class="text-blue-400 font-semibold">Key concepts:</span> static lint, visual beat, --max-gap, rhythm gate.</p>
 <div class="flex justify-start mt-6">
 <button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
-<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Marcar como lido</span>
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span>
 </button>
 </div>
 </section>
@@ -360,21 +360,21 @@ echo "exit: $?"   # 0 = ritmo ok · ≠0 = buraco de ritmo</code></pre>
 <div class="flex items-center justify-between gap-3 mb-6">
 <div class="flex items-center space-x-4">
 <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex-shrink-0">4</span>
-<h2 class="text-2xl font-bold">💬 captions.py: legenda na altura do micro</h2>
+<h2 class="text-2xl font-bold">💬 captions.py: captions at mouth level</h2>
 </div>
-<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Marcar dúvida neste tópico" type="button"><span aria-hidden="true">?</span><span>Tenho dúvida</span></button>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Flag a question about this topic" type="button"><span aria-hidden="true">?</span><span>I have a question</span></button>
 </div>
 <p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m2-2-t4-p1">
-              O <code class="text-blue-400">captions.py</code> gera "beats" de legenda de 2–3 palavras, sincronizados com a voz, no estilo retenção. O truque anti-clichê está no destaque: as palavras que você passa em <code>--keywords</code> (números, nomes de marca, conceitos fortes) são pintadas na <strong class="text-blue-400">sua cor de acento</strong>. Como as keywords mudam a cada vídeo, suas legendas nunca saem iguais às de ninguém.
+              O <code class="text-blue-400">captions.py</code> generates 2–3-word caption “beats,” synchronized with the voice, in a retention-focused style. The anti-cliché trick is in the highlight: the words you put in <code>--keywords</code> (numbers, brand names, strong concepts) are painted onto the <strong class="text-blue-400">your accent color</strong>. Since the keywords change with every video, your captions never come out the same as anyone else's.
             </p>
 <div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-5 mb-6">
-<p class="text-sm font-semibold text-blue-400 mb-1">Objetivo</p>
-<p class="text-neutral-300 text-sm inema-prose" data-inema-block="m2-2-t4-p2">Produzir um <code>captions.json</code> com beats curtos e uma palavra-chave destacada por beat, para legendas que apoiam a fala (na altura do peito/microfone) em vez de repeti-la embaixo da tela.</p>
+<p class="text-sm font-semibold text-blue-400 mb-1">Objective</p>
+<p class="text-neutral-300 text-sm inema-prose" data-inema-block="m2-2-t4-p2">Produce one <code>captions.json</code> with short beats and one highlighted keyword per beat, for captions that support the speech (at chest/microphone height) instead of repeating it at the bottom of the screen.</p>
 </div>
 <div class="bg-dark-900 rounded-xl border border-dark-600 overflow-hidden mb-6">
 <div class="flex items-center justify-between px-4 py-2 border-b border-dark-600 bg-dark-800">
 <span class="text-xs font-mono text-neutral-400">terminal</span>
-<button class="text-xs px-2 py-1 rounded bg-dark-700 hover:bg-dark-600 text-neutral-300 transition-colors" onclick="var c=this.closest('div').parentNode.querySelector('code'); if(navigator.clipboard)navigator.clipboard.writeText(c.innerText); this.textContent='Copiado';" type="button">Copiar</button>
+<button class="text-xs px-2 py-1 rounded bg-dark-700 hover:bg-dark-600 text-neutral-300 transition-colors" onclick="var c=this.closest('div').parentNode.querySelector('code'); if(navigator.clipboard)navigator.clipboard.writeText(c.innerText); this.textContent='Copiado';" type="button">Copy</button>
 </div>
 <pre class="p-4 overflow-x-auto text-sm"><code class="font-mono text-blue-300">python3 captions.py \
   --transcript corte-final.json \
@@ -383,13 +383,13 @@ echo "exit: $?"   # 0 = ritmo ok · ≠0 = buraco de ritmo</code></pre>
   --out captions.json</suas-palavras-chave-separadas-por-virgula></code></pre>
 </div>
 <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-5 mb-6">
-<p class="text-sm font-semibold text-emerald-400 mb-1">Como verificar</p>
-<p class="text-neutral-300 text-sm inema-prose">Abra o <code>captions.json</code>: cada beat tem <code>start</code>, <code>end</code> e uma lista <code>words</code> com <code>hi:true</code> na palavra destacada. Confira que os tempos batem com a voz e que a palavra em destaque é a certa (se não houver match nas keywords, o script destaca a palavra mais longa do beat).</p>
+<p class="text-sm font-semibold text-emerald-400 mb-1">How to verify</p>
+<p class="text-neutral-300 text-sm inema-prose">Open the <code>captions.json</code>: each beat has <code>start</code>, <code>end</code> and a list <code>words</code> with <code>hi:true</code> on the highlighted word. Check that the timings match the voice and that the highlighted word is the right one (if there’s no keyword match, the script highlights the longest word in the beat).</p>
 </div>
-<p class="text-neutral-300 text-sm inema-prose mb-2"><span class="text-blue-400 font-semibold">Conceitos-chave:</span> beat de legenda, --keywords, cor de acento, área segura.</p>
+<p class="text-neutral-300 text-sm inema-prose mb-2"><span class="text-blue-400 font-semibold">Key concepts:</span> caption beat, --keywords, accent color, safe area.</p>
 <div class="flex justify-start mt-6">
 <button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
-<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Marcar como lido</span>
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span>
 </button>
 </div>
 </section>
@@ -398,21 +398,21 @@ echo "exit: $?"   # 0 = ritmo ok · ≠0 = buraco de ritmo</code></pre>
 <div class="flex items-center justify-between gap-3 mb-6">
 <div class="flex items-center space-x-4">
 <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex-shrink-0">5</span>
-<h2 class="text-2xl font-bold">🔊 make-sfx.sh + mix-sfx.py: SFX sob a voz</h2>
+<h2 class="text-2xl font-bold">🔊 make-sfx.sh + mix-sfx.py: SFX Under the Voice</h2>
 </div>
-<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Marcar dúvida neste tópico" type="button"><span aria-hidden="true">?</span><span>Tenho dúvida</span></button>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Flag a question about this topic" type="button"><span aria-hidden="true">?</span><span>I have a question</span></button>
 </div>
 <p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m2-2-t5-p1">
-              O som é feito em dois passos. <code class="text-blue-400">make-sfx.sh</code> <strong class="text-blue-400">sintetiza</strong> a paleta de efeitos (whoosh, pop, type, buzz, boom, ding, riser) com o ffmpeg — sem baixar nada, livre de direitos e sempre igual. Depois, <code class="text-blue-400">mix-sfx.py</code> sobrepõe cada efeito no tempo certo <strong class="text-blue-400">por baixo da voz</strong>, com um limitador para não saturar. Você passa os eventos como uma lista de <code>[nome, segundo]</code>.
+              Audio is made in two steps. <code class="text-blue-400">make-sfx.sh</code> <strong class="text-blue-400">synthesizes</strong> the effects palette (whoosh, pop, type, buzz, boom, ding, riser) with ffmpeg—no downloads, royalty-free, and always the same. Then, <code class="text-blue-400">mix-sfx.py</code> overlays each effect at the right time <strong class="text-blue-400">under the voice</strong>, with a limiter to prevent clipping. You pass the events as a list of <code>[nome, segundo]</code>.
             </p>
 <div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-5 mb-6">
-<p class="text-sm font-semibold text-blue-400 mb-1">Objetivo</p>
-<p class="text-neutral-300 text-sm inema-prose" data-inema-block="m2-2-t5-p2">Gerar a paleta de SFX localmente e misturá-la no render nos tempos dos cortes, entregando um <code>final.mp4</code> com efeitos que "produzem" as transições sem competir com a fala.</p>
+<p class="text-sm font-semibold text-blue-400 mb-1">Objective</p>
+<p class="text-neutral-300 text-sm inema-prose" data-inema-block="m2-2-t5-p2">Generate the SFX palette locally and mix it into the render at the cut points, delivering a <code>final.mp4</code> with effects that “produce” the transitions without competing with the speech.</p>
 </div>
 <div class="bg-dark-900 rounded-xl border border-dark-600 overflow-hidden mb-6">
 <div class="flex items-center justify-between px-4 py-2 border-b border-dark-600 bg-dark-800">
 <span class="text-xs font-mono text-neutral-400">terminal</span>
-<button class="text-xs px-2 py-1 rounded bg-dark-700 hover:bg-dark-600 text-neutral-300 transition-colors" onclick="var c=this.closest('div').parentNode.querySelector('code'); if(navigator.clipboard)navigator.clipboard.writeText(c.innerText); this.textContent='Copiado';" type="button">Copiar</button>
+<button class="text-xs px-2 py-1 rounded bg-dark-700 hover:bg-dark-600 text-neutral-300 transition-colors" onclick="var c=this.closest('div').parentNode.querySelector('code'); if(navigator.clipboard)navigator.clipboard.writeText(c.innerText); this.textContent='Copiado';" type="button">Copy</button>
 </div>
 <pre class="p-4 overflow-x-auto text-sm"><code class="font-mono text-blue-300"># 1) sintetiza a paleta de SFX em ./sfx
 bash make-sfx.sh sfx
@@ -423,13 +423,13 @@ python3 mix-sfx.py \
   --events '[["boom",0.0],["whoosh",6.5],["ding",8.6]]'</code></pre>
 </div>
 <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-5 mb-6">
-<p class="text-sm font-semibold text-emerald-400 mb-1">Como verificar</p>
-<p class="text-neutral-300 text-sm inema-prose">Depois do <code>make-sfx.sh</code>, confira que a pasta <code>sfx/</code> tem os <code>.wav</code> (whoosh, boom, ding…). Depois do <code>mix-sfx.py</code>, ouça o <code>final.mp4</code>: os efeitos devem cair exatamente nos cortes e ficar por baixo da voz. Se você re-cortar o vídeo, os tempos dos eventos mudam — <strong>re-temporize</strong> a lista <code>--events</code>.</p>
+<p class="text-sm font-semibold text-emerald-400 mb-1">How to verify</p>
+<p class="text-neutral-300 text-sm inema-prose">After the <code>make-sfx.sh</code>, make sure the folder <code>sfx/</code> has the <code>.wav</code> (whoosh, boom, ding…). After the <code>mix-sfx.py</code>, listen to the <code>final.mp4</code>: the effects should land exactly on the cuts and stay under the voice. If you recut the video, the event timings change — <strong>retime</strong> the list <code>--events</code>.</p>
 </div>
-<p class="text-neutral-300 text-sm inema-prose mb-2"><span class="text-blue-400 font-semibold">Conceitos-chave:</span> paleta de SFX, eventos [nome, t], ducking, limitador.</p>
+<p class="text-neutral-300 text-sm inema-prose mb-2"><span class="text-blue-400 font-semibold">Key concepts:</span> SFX palette, events [name, t], ducking, limiter.</p>
 <div class="flex justify-start mt-6">
 <button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
-<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Marcar como lido</span>
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span>
 </button>
 </div>
 </section>
@@ -438,39 +438,39 @@ python3 mix-sfx.py \
 <div class="flex items-center justify-between gap-3 mb-6">
 <div class="flex items-center space-x-4">
 <span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl flex-shrink-0">6</span>
-<h2 class="text-2xl font-bold">🎲 Determinismo em Hyperframes</h2>
+<h2 class="text-2xl font-bold">🎲 Determinism in Hyperframes</h2>
 </div>
-<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Marcar dúvida neste tópico" type="button"><span aria-hidden="true">?</span><span>Tenho dúvida</span></button>
+<button aria-pressed="false" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm flex-shrink-0" data-inema-doubt-toggle="" title="Flag a question about this topic" type="button"><span aria-hidden="true">?</span><span>I have a question</span></button>
 </div>
 <p class="text-neutral-300 mb-6 leading-relaxed inema-prose" data-inema-block="m2-2-t6-p1">
-              Nada disso funciona se cada render sair diferente. Por isso as animações do Hyperframes são <strong class="text-blue-400">determinísticas</strong>: sem <code class="text-blue-400">Math.random()</code> e sem <code class="text-blue-400">Date.now()</code>, nada de <code>repeat:-1</code> (repetições infinitas), e as timelines ficam em estado <code>paused</code>, registradas para o motor controlar frame a frame. Mesmo projeto → mesmo frame, toda vez — condição para o lint e o QC serem confiáveis.
+              None of this works if every render comes out differently. That’s why Hyperframes animations are <strong class="text-blue-400">deterministic</strong>: without <code class="text-blue-400">Math.random()</code> and without <code class="text-blue-400">Date.now()</code>, no <code>repeat:-1</code> (endless repeats), and the timelines remain in a <code>paused</code>, recorded for the engine to control frame by frame. Same project → same frame, every time — a requirement for reliable lint and QC.
             </p>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
 <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
-<h4 class="font-bold text-red-400 mb-4">✗ Quebra o determinismo</h4>
+<h4 class="font-bold text-red-400 mb-4">✗ Breaks determinism</h4>
 <ul class="space-y-3 text-neutral-300 text-sm">
-<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span><code>Math.random()</code> para posições/tempos</span></li>
-<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span><code>Date.now()</code> / relógio do sistema</span></li>
-<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span><code>repeat:-1</code> (loop infinito)</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span><code>Math.random()</code> for positions/timings</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span><code>Date.now()</code> / system clock</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span><code>repeat:-1</code> (infinite loop)</span></li>
 </ul>
 </div>
 <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
-<h4 class="font-bold text-emerald-400 mb-4">✓ Mantém o determinismo</h4>
+<h4 class="font-bold text-emerald-400 mb-4">✓ Preserves determinism</h4>
 <ul class="space-y-3 text-neutral-300 text-sm">
-<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Valores fixos ou derivados da duração</span></li>
-<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Repetições finitas calculadas</span></li>
-<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span><code>gsap.timeline({paused:true})</code> registrada</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Fixed values or values derived from the duration</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Calculated finite repetitions</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span><code>gsap.timeline({paused:true})</code> registered</span></li>
 </ul>
 </div>
 </div>
 <div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-5 mb-6">
-<p class="text-sm font-semibold text-blue-400 mb-1">Objetivo</p>
-<p class="text-neutral-300 text-sm inema-prose" data-inema-block="m2-2-t6-p2">Confirmar que o motor de motion (Hyperframes) está instalado e disponível — o pré-requisito para renderizar as timelines determinísticas.</p>
+<p class="text-sm font-semibold text-blue-400 mb-1">Objective</p>
+<p class="text-neutral-300 text-sm inema-prose" data-inema-block="m2-2-t6-p2">Confirm that the motion engine (Hyperframes) is installed and available—the prerequisite for rendering deterministic timelines.</p>
 </div>
 <div class="bg-dark-900 rounded-xl border border-dark-600 overflow-hidden mb-6">
 <div class="flex items-center justify-between px-4 py-2 border-b border-dark-600 bg-dark-800">
 <span class="text-xs font-mono text-neutral-400">terminal</span>
-<button class="text-xs px-2 py-1 rounded bg-dark-700 hover:bg-dark-600 text-neutral-300 transition-colors" onclick="var c=this.closest('div').parentNode.querySelector('code'); if(navigator.clipboard)navigator.clipboard.writeText(c.innerText); this.textContent='Copiado';" type="button">Copiar</button>
+<button class="text-xs px-2 py-1 rounded bg-dark-700 hover:bg-dark-600 text-neutral-300 transition-colors" onclick="var c=this.closest('div').parentNode.querySelector('code'); if(navigator.clipboard)navigator.clipboard.writeText(c.innerText); this.textContent='Copiado';" type="button">Copy</button>
 </div>
 <pre class="p-4 overflow-x-auto text-sm"><code class="font-mono text-blue-300"># confere que o motor de motion está disponível
 npx hyperframes --version
@@ -479,33 +479,33 @@ npx hyperframes --version
 grep -nE "Math\.random|Date\.now|repeat:\s*-1" motion/index.html || echo "OK: determinístico"</code></pre>
 </div>
 <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-5 mb-6">
-<p class="text-sm font-semibold text-emerald-400 mb-1">Como verificar</p>
-<p class="text-neutral-300 text-sm inema-prose">O <code>--version</code> deve imprimir um número (motor instalado). O <code>grep</code> deve imprimir <code>OK: determinístico</code>: se ele listar linhas, há uma fonte de aleatoriedade que precisa sair antes de renderizar. Rode o <code>lint-timeline.py</code> logo depois — os dois juntos são a garantia de um render reprodutível.</p>
+<p class="text-sm font-semibold text-emerald-400 mb-1">How to verify</p>
+<p class="text-neutral-300 text-sm inema-prose">O <code>--version</code> should print a number (engine installed). The <code>grep</code> should print <code>OK: determinístico</code>: if it lists lines, there’s a source of randomness that needs to be removed before rendering. Run the <code>lint-timeline.py</code> right afterward — together, the two guarantee a reproducible render.</p>
 </div>
-<p class="text-neutral-300 text-sm inema-prose mb-2"><span class="text-blue-400 font-semibold">Conceitos-chave:</span> determinismo, repeat finito, paused, reprodutibilidade.</p>
+<p class="text-neutral-300 text-sm inema-prose mb-2"><span class="text-blue-400 font-semibold">Key concepts:</span> determinism, finite repeat, paused, reproducibility.</p>
 <div class="flex justify-start mt-6">
 <button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
-<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Marcar como lido</span>
+<span aria-hidden="true" class="inema-read-icon">○</span><span class="inema-read-label">Mark as read</span>
 </button>
 </div>
 </section>
 <!-- RESUMO DO MÓDULO -->
 <section class="mb-4">
 <div class="bg-gradient-to-br from-blue-900/40 via-dark-800 to-dark-800 rounded-xl border border-blue-500/30 p-8">
-<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✅</span> Resumo do módulo</h2>
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">✅</span> Module summary</h2>
 <div class="space-y-4 mb-8">
-<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Corte por silêncio real</strong><span class="text-neutral-400"> — islands.py acha as ilhotas por energia, não pelos timestamps do Whisper.</span></div></div>
-<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Cadeia com comporta dura</strong><span class="text-neutral-400"> — cut.py monta e verify-cut.py bloqueia (exit 0/1) antes de animar.</span></div></div>
-<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Ritmo e legendas verificados</strong><span class="text-neutral-400"> — lint-timeline.py trava gaps &gt;4s; captions.py destaca suas keywords.</span></div></div>
-<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">SFX local e render determinístico</strong><span class="text-neutral-400"> — make-sfx.sh/mix-sfx.py e Hyperframes sem random/now: mesma entrada, mesma saída.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Cut based on actual silence</strong><span class="text-neutral-400"> — islands.py finds the islands by energy, not by Whisper timestamps.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Chain with a hard gate</strong><span class="text-neutral-400"> — cut.py assembles and verify-cut.py blocks (exit 0/1) before animation.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Pacing and captions verified</strong><span class="text-neutral-400"> — lint-timeline.py blocks gaps &gt;4s; captions.py highlights your keywords.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Local SFX and deterministic render</strong><span class="text-neutral-400"> — make-sfx.sh/mix-sfx.py and Hyperframes without random/now: same input, same output.</span></div></div>
 </div>
 <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
-<h3 class="font-semibold text-blue-400 mb-2">Próxima trilha:</h3>
-<p class="text-neutral-300">Trilha 3 — Como usar: instalar a stack, gerar a sua skill na entrevista e rodar o primeiro reel.</p>
+<h3 class="font-semibold text-blue-400 mb-2">Next track:</h3>
+<p class="text-neutral-300">Track 3 — How to use it: install the stack, generate your skill during the interview, and run your first reel.</p>
 </div>
 <div class="flex flex-col sm:flex-row gap-4">
-<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="modulo-2-1.html">← Voltar: 2.1</a>
-<a class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors" href="../trilha3/index.html">Trilha 3: Como usar →</a>
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="modulo-2-1.html">← Back: 2.1</a>
+<a class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors" href="../trilha3/index.html">Track 3: How to use it →</a>
 </div>
 </div>
 </section>
@@ -514,7 +514,7 @@ grep -nE "Math\.random|Date\.now|repeat:\s*-1" motion/index.html || echo "OK: de
 </div>
 </main>
 <footer class="border-t border-dark-600 py-8 mt-8">
-<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>videos-edit Forja Reel — Curso · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a></p></div>
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>videos-edit Forja Reel — Course · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" target="_blank">INEMA.CLUB</a></p></div>
 </footer>
 <script>
     (function(){
@@ -523,7 +523,7 @@ grep -nE "Math\.random|Date\.now|repeat:\s*-1" motion/index.html || echo "OK: de
       if (themeToggle) themeToggle.addEventListener('click', function(){ darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden'); html.classList.toggle('dark'); var isDark=html.classList.contains('dark'); localStorage.setItem('theme', isDark?'dark':'light'); try{var p=JSON.parse(localStorage.getItem('inema.prefs')||'{}'); p.theme=isDark?'inema-dark':'claro'; localStorage.setItem('inema.prefs', JSON.stringify(p));}catch(e){} html.style.colorScheme=isDark?'dark':'light'; });
     })();
   </script>
-<script src="../../assets/learn.js"></script>
+<script src="../../../assets/learn.js"></script>
 <script>if (window.INEMA && typeof window.INEMA.init === 'function') { window.INEMA.init(); }</script>
 </body>
 </html>
